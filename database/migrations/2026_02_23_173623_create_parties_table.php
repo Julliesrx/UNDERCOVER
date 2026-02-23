@@ -12,9 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('parties', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        $table->id('id_partie');
+        $table->dateTime('date');
+        $table->integer('nbJoueurs');
+        $table->integer('nbUndercovers');
+        $table->integer('nbMrWhite');
+        $table->foreignId('id_mots')->constrained('mots', 'id_mots');
+        $table->timestamps();
+    });
     }
 
     /**
