@@ -16,7 +16,6 @@ return new class extends Migration
         $table->string('nom');
         $table->string('avatar')->nullable();
         $table->integer('scoreTotal')->default(0);
-        $table->timestamps();
     });
     }
 

@@ -15,8 +15,8 @@ return new class extends Migration
         $table->id('id_user');
         $table->string('nom');
         $table->string('username')->unique();
+        // $table->string('username')->unique(); ajouter email ???
         $table->string('password');
-        $table->timestamps();
     });
     }
 

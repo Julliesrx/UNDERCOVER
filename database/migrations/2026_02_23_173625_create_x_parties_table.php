@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('x_parties', function (Blueprint $table) {
-        $table->foreignId('id_partie')->constrained('parties', 'id_partie');
-        $table->foreignId('id_joueur')->constrained('joueurs', 'id_joueur');
+        $table->foreignId('id_partie')->constrained('parties', 'id_partie'); 
+        $table->foreignId('id_joueur')->constrained('joueurs', 'id_joueur'); // id_joueur ou id_user ??
         $table->string('role');
         $table->integer('score')->default(0);
         $table->boolean('estGagnant')->default(false);
         $table->primary(['id_partie', 'id_joueur']);
-        $table->timestamps();
     });
     }
 

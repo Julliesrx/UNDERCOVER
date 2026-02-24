@@ -18,7 +18,6 @@ return new class extends Migration
         $table->integer('nbUndercovers');
         $table->integer('nbMrWhite');
         $table->foreignId('id_mots')->constrained('mots', 'id_mots');
-        $table->timestamps();
     });
     }
 
