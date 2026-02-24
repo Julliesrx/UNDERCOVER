@@ -15,9 +15,11 @@ return new class extends Migration
         $table->foreignId('id_partie')->constrained('parties', 'id_partie'); 
         $table->foreignId('id_joueur')->constrained('joueurs', 'id_joueur'); // id_joueur ou id_user ??
         $table->string('role');
+        $table->string('mot_recu')->nullable();
         $table->integer('score')->default(0);
         $table->boolean('estGagnant')->default(false);
         $table->primary(['id_partie', 'id_joueur']);
+        $table->timestamps();
     });
     }
 

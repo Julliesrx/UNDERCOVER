@@ -17,7 +17,12 @@ return new class extends Migration
         $table->integer('nbJoueurs');
         $table->integer('nbUndercovers');
         $table->integer('nbMrWhite');
+        $table->string('mot_civil')->nullable();
+        $table->string('mot_undercover')->nullable();
         $table->foreignId('id_mots')->constrained('mots', 'id_mots');
+        $table->unsignedBigInteger('id_user');
+        $table->foreign('id_user')->references('id_user')->on('users');
+        $table->timestamps();
     });
     }
 

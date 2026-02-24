@@ -15,6 +15,9 @@ return new class extends Migration
         $table->id('id_mots');
         $table->string('mot1');
         $table->string('mot2');
+        $table->unsignedBigInteger('id_user');
+        $table->foreign('id_user')->references('id_user')->on('users');
+        $table->timestamps();
     });
     }
 
