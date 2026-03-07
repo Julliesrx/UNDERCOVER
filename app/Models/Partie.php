@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Partie extends Model
 {
+    protected $primaryKey = 'id_partie';
     protected $fillable = ['date', 'nbJoueurs', 'nbUndercovers', 'nbMrWhite', 'mot_civil', 'mot_undercover', 'id_mots', 'id_user'];
 
     public function user() {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mot;
 
 class MotsController extends Controller
 {
@@ -11,7 +12,8 @@ class MotsController extends Controller
      */
     public function index()
     {
-        //
+        $mots = Mot::all();
+        return view('mots.index', ['mots' => $mots]);
     }
 
     /**
@@ -19,7 +21,7 @@ class MotsController extends Controller
      */
     public function create()
     {
-        //
+        return view('mots.form');
     }
 
     /**
@@ -27,7 +29,15 @@ class MotsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'mot1' => 'required|string|max:50',
+            'mot2' => 'required|string|max:50',
+            // ajouter plus tard l'id du user authentifié et rectifier que ne peut pas être null
+        ]);
+
+        Mot::create($request->all());
+
+        return redirect()->route('mots.index')->with('success', 'Paire de mots ajoutée');
     }
 
     /**
@@ -35,7 +45,10 @@ class MotsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $mot = Mot::findOrFail($id);
+        // ajouter potentiellement les parties où la paire à été utilisée ?
+
+        return view('mots.show', ['mot' => $mot]);
     }
 
     /**
@@ -43,7 +56,9 @@ class MotsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mot = Mot::findOrFail($id);
+    
+        return view('mots.form', ['mot' => $mot]);
     }
 
     /**
@@ -51,7 +66,16 @@ class MotsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'mot1' => 'required|string|max:50',
+            'mot2' => 'required|string|max:50',
+            // ajouter plus tard l'id du user authentifié ??
+        ]);
+
+        $mot = Mot::findOrFail($id);
+        $mot->update($request->all());
+
+        return redirect()->route('mots.index')->with('success', 'Paire de mots modifiée');
     }
 
     /**
@@ -59,6 +83,9 @@ class MotsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mot = Mot::findOrFail($id);
+        $mot->delete();
+
+        return redirect()->route('mots.index')->with('success', 'Paire de mots supprimée !');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mot extends Model
 {
+    protected $primaryKey = 'id_mots';
     protected $fillable = ['mot1', 'mot2', 'id_user'];
     
     public function user() {

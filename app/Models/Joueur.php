@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Joueur extends Model
 {
+    protected $primaryKey = 'id_joueur';
     protected $fillable = ['nom', 'avatar', 'scoreTotal', 'id_user'];
 
     public function user() {
