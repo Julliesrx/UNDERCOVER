@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('parties', function (Blueprint $table) {
         $table->id('id_partie');
-        $table->dateTime('date');
         $table->integer('nbJoueurs');
         $table->integer('nbUndercovers');
         $table->integer('nbMrWhite');
