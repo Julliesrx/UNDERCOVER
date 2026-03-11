@@ -18,6 +18,11 @@ class Partie extends Model
     }
 
     public function joueurs() {
-        return $this->belongsToMany(Joueur::class, 'x_parties', 'id_partie', 'id_joueur');
+        return $this->belongsToMany(Joueur::class, 'x_parties', 'id_partie', 'id_joueur')
+                    ->withPivot('role', 'mot_recu', 'score', 'estGagnant');
+    }
+
+    public function saison() {
+        return $this->belongsTo(Saison::class, 'id_saison');
     }
 }
