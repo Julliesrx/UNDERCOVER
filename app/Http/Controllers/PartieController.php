@@ -17,7 +17,8 @@ class PartieController extends Controller
 
     public function create()
     {
-        return view('parties.form');
+        $joueurs = Joueur::all();
+        return view('parties.form', ['joueurs' => $joueurs]);
     }
 
     public function store(Request $request)
@@ -91,7 +92,7 @@ class PartieController extends Controller
 
     public function show(string $id)
     {
-        $partie = Partie::findOrFail($id);
+        $partie = Partie::with('joueurs')->findOrFail($id);
         // ajouter potentiellement les joueurs, mots etc ?
 
         return view('parties.show', ['partie' => $partie]);
