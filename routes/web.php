@@ -14,3 +14,5 @@ Route::resource('mots', MotsController::class);
 Route::resource('joueurs', JoueurController::class);
 Route::resource('parties', PartieController::class);
 Route::resource('users', UserController::class);
+
+Route::patch('users/{id}/ban', [UserController::class, 'ban'])->name('users.ban');

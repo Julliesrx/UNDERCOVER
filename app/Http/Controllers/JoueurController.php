@@ -7,26 +7,17 @@ use App\Models\Joueur;
 
 class JoueurController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $joueurs = Joueur::all();
         return view('joueurs.index', ['joueurs' => $joueurs]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('joueurs.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -42,9 +33,6 @@ class JoueurController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $joueur = Joueur::findOrFail($id);
@@ -53,9 +41,6 @@ class JoueurController extends Controller
         return view('joueurs.show', ['joueur' => $joueur]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $joueur = Joueur::findOrFail($id);
@@ -63,9 +48,6 @@ class JoueurController extends Controller
         return view('joueurs.form', ['joueur' => $joueur]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -81,9 +63,6 @@ class JoueurController extends Controller
         return redirect()->route('joueurs.index')->with('success', 'Joueur modifié');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $joueur = Joueur::findOrFail($id);

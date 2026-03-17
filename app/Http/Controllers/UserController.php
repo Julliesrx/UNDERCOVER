@@ -3,62 +3,89 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users.index', ['users' => $users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('users.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:50',
+            'username' => 'required|string|max:50|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8'
+        ]);
+
+        User::create([
+            'nom' => $request->nom,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('users.index')->with('success', 'User créé !');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.show', ['user' => $user]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.form', ['user' => $user]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:50',
+            'username' => 'required|string|max:50|unique:users,username,'.$id,
+            'email' => 'required|email|unique:users,email,'.$id,
+            'role' => 'required|in:player,admin',
+            'password' => 'nullable|string|min:8'
+        ]);
+
+        $user = User::findOrFail($id);
+        $data = $request->except('password');
+    
+        if($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
+
+        return redirect()->route('users.index')->with('success', 'User modifié !');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User supprimé !');
+    }
+
+    public function ban(string $id) 
+    {
+        $user = User::findOrFail($id);
+        $user->is_banned = !$user->is_banned;
+        $user->save();
+
+        $message = $user->is_banned ? 'User banni !' : 'User débanni !';
+        return redirect()->route('users.index')->with('success', $message);
     }
 }

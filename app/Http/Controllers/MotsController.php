@@ -7,26 +7,17 @@ use App\Models\Mot;
 
 class MotsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $mots = Mot::all();
         return view('mots.index', ['mots' => $mots]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('mots.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -40,9 +31,6 @@ class MotsController extends Controller
         return redirect()->route('mots.index')->with('success', 'Paire de mots ajoutée');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $mot = Mot::findOrFail($id);
@@ -51,9 +39,6 @@ class MotsController extends Controller
         return view('mots.show', ['mot' => $mot]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $mot = Mot::findOrFail($id);
@@ -61,9 +46,6 @@ class MotsController extends Controller
         return view('mots.form', ['mot' => $mot]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -78,9 +60,6 @@ class MotsController extends Controller
         return redirect()->route('mots.index')->with('success', 'Paire de mots modifiée');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $mot = Mot::findOrFail($id);
