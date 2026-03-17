@@ -16,6 +16,11 @@
             <p>{{ $joueur->scoreTotal }}</p>
             <img src="{{ $joueur->avatar }}" alt=""> 
             <div>
+                <form action="{{ route('joueurs.resetScore', $joueur->id_joueur) }}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit">Réinitialiser le score</button>
+                </form>
                 <a href="{{ route('joueurs.show', $joueur->id_joueur) }}">Voir</a>
                 <a href="{{ route('joueurs.edit', $joueur->id_joueur) }}">Modifier</a>
                 <form action="{{ route('joueurs.destroy', $joueur->id_joueur) }}" method="POST">

@@ -70,4 +70,13 @@ class JoueurController extends Controller
 
         return redirect()->route('joueurs.index')->with('success', 'Joueur supprimé !');
     }
+
+    public function resetScore(string $id) 
+    {
+        $joueur = Joueur::findOrFail($id);
+        $joueur->scoreTotal = 0;
+        $joueur->save();
+
+        return redirect()->route('joueurs.show', $id)->with('success', 'Score réinitialisé !');
+    }
 }

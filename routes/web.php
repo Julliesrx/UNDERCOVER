@@ -16,3 +16,4 @@ Route::resource('parties', PartieController::class);
 Route::resource('users', UserController::class);
 
 Route::patch('users/{id}/ban', [UserController::class, 'ban'])->name('users.ban');
+Route::patch('joueurs/{id}/reset', [JoueurController::class, 'resetScore'])->name('joueurs.resetScore');
