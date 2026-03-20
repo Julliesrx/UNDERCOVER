@@ -23,10 +23,13 @@ class MotsController extends Controller
         $request->validate([
             'mot1' => 'required|string|max:50',
             'mot2' => 'required|string|max:50',
-            // ajouter plus tard l'id du user authentifié et rectifier que ne peut pas être null
         ]);
 
-        Mot::create($request->all());
+        Mot::create([
+            'mot1' => $request->mot1,
+            'mot2' => $request->mot2,
+            'id_user' => auth()->id(),
+        ]);
 
         return redirect()->route('mots.index')->with('success', 'Paire de mots ajoutée');
     }

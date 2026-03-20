@@ -29,7 +29,6 @@ class PartieController extends Controller
             'nbMrWhite' => 'required|integer|min:0',
             'option_mots' => 'required|in:base,perso,mix',
             'joueurs' => 'required|array|min:3',
-            // ajouter plus tard l'id du user authentifié et rectifier que ne peut pas être null
         ]);
 
         // récupère une paire de mots de manière aléatoire et selon l'option choisie
@@ -59,7 +58,7 @@ class PartieController extends Controller
             'mot_civil' => $mot_civil,
             'mot_undercover' => $mot_undercover,
             'id_mots' => $mot->id_mots,
-            // ajouter plus tard id_user authentifié
+            'id_user' => auth()->id()
         ]);
 
         // attribution des rôles 

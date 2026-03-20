@@ -24,10 +24,13 @@ class JoueurController extends Controller
             'nom' => 'required|string|max:50',
             'avatar' => 'nullable|string|max:50',
             // ajouter plus tard le score total
-            // ajouter plus tard l'id du user authentifié et rectifier que ne peut pas être null
         ]);
 
-        Joueur::create($request->all());
+        Joueur::create([
+            'nom' => $request->nom,
+            'avatar' => $request->avatar,
+            'id_user' => auth()->id(),
+        ]);
 
         return redirect()->route('joueurs.index')->with('success', 'Joueur ajouté');
 
