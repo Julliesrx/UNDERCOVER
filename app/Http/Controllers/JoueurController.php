@@ -36,9 +36,10 @@ class JoueurController extends Controller
     public function show(string $id)
     {
         $joueur = Joueur::findOrFail($id);
+        $saisons = $joueur->saisons()->orderBy('date_debut', 'desc')->get();
         // ajouter potentiellement les parties jouées par ce joueur ?
-
-        return view('joueurs.show', ['joueur' => $joueur]);
+        
+        return view('joueurs.show', ['joueur' => $joueur, 'saisons' => $saisons]);
     }
 
     public function edit(string $id)

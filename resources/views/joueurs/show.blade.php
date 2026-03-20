@@ -11,6 +11,18 @@
     <p>{{ $joueur->nom }}</p>
     <p>{{ $joueur->avatar }}</p>
     <p>{{ $joueur->scoreTotal }}</p>
+
+    <h2>Scores par saison</h2>
+    <ul>
+        @forelse($saisons as $saison)
+        <li>
+            <p>{{ $saison->nom }}</p>
+            <p>Score : {{ $saison->pivot->score }}</p>
+        </li>
+        @empty
+        <li>Aucune saison jouée</li>
+        @endforelse
+    </ul>
     
     <form action="{{ route('joueurs.resetScore', $joueur->id_joueur) }}" method="POST">
         @csrf
