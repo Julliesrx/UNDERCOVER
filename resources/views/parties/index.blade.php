@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Liste des parties</h1>
+    @if(session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
     <a href="{{ route('parties.create') }}">Créer une partie</a>
 
     <ul>

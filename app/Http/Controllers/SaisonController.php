@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Saison;
 use App\Models\Joueur;
 
 class SaisonController extends Controller
@@ -22,11 +23,15 @@ class SaisonController extends Controller
     {
         $request->validate([
             'nom' => 'required|string|max:50',
-            'date_debut' => 'required|date',
-            'date_fin' => 'nullable|date|after:date_debut'
+            'date_fin' => 'nullable|date',
         ]);
 
-        Saison::create($request->all());
+        Saison::create([
+            'nom' => $request->nom,
+            'date_debut' => now(),
+            'date_fin' => $request->date_fin,
+            'is_active' => true,
+        ]);
 
         return redirect()->route('saisons.index')->with('success', 'Saison créée !');
     }
@@ -50,12 +55,14 @@ class SaisonController extends Controller
     {
         $request->validate([
             'nom' => 'required|string|max:50',
-            'date_debut' => 'required|date',
             'date_fin' => 'nullable|date|after:date_debut',
         ]);
 
         $saison = Saison::findOrFail($id);
-        $saison->update($request->all());
+        $saison->update([
+            'nom' => $request->nom,
+            'date_fin' => $request->date_fin,
+        ]);
 
         return redirect()->route('saisons.index')->with('success', 'Saison modifiée !');
     }

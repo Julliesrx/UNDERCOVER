@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Liste des paires de mots</h1>
+    @if(session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
     <a href="{{ route('mots.create') }}">Ajouter une paire de mots</a>
 
     <ul>

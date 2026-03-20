@@ -18,14 +18,14 @@
         <label>Nom</label>
         <input type="text" name="nom" value="{{ old('nom', $saison->nom ?? '') }}">
 
-        <label>Date de début</label>
-        <input type="date" name="date_debut" value="{{ old('date_debut', $saison->date_debut ?? '') }}">
+        @if(isset($saison))
+            <label>Date de début : {{ $saison->date_debut }}</label>
+        @else
+            <label>Date de début : Aujourd'hui</label>
+        @endif
 
         <label>Date de fin</label>
         <input type="date" name="date_fin" value="{{ old('date_fin', $saison->date_fin ?? '') }}">
-
-        <label>Active</label>
-        <input type="checkbox" name="is_active" value="1" {{ isset($saison) && $saison->is_active ? 'checked' : '' }}>
 
         <button type="submit">{{ isset($saison) ? 'Modifier' : 'Créer' }}</button>
 

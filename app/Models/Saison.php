@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Saison extends Model
 {
+    protected $primaryKey = 'id_saison';
     protected $fillable = ['nom', 'date_debut', 'date_fin', 'is_active'];
 
     public function joueurs() {
-        return $this->belongsToMany(Joueur::class, 'saison_joueur', 'id_saison', 'id_joueur')
+        return $this->belongsToMany(Joueur::class, 'saisons_joueurs', 'id_saison', 'id_joueur')
                     ->withPivot('score');
     }
 

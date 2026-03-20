@@ -7,6 +7,9 @@
 </head>
 <body>
     <h1>Liste des joueurs</h1>
+    @if(session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
     <a href="{{ route('joueurs.create') }}">Ajouter un joueur</a>
 
     <ul>
