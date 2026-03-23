@@ -10,12 +10,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', ['users' => $users]);
+        return view('users.admin.index', ['users' => $users]);
     }
 
     public function create()
     {
-        return view('users.form');
+        return view('users.admin.form');
     }
 
     public function store(Request $request)
@@ -40,13 +40,23 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::findOrFail($id);
-        return view('users.show', ['user' => $user]);
+
+        if(auth()->user()->role === 'admin') {
+            return view('users.admin.show', ['user' => $user]);
+        } else {
+            return view('users.player.show', ['user' => $user]);
+        }
     }
 
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-        return view('users.form', ['user' => $user]);
+
+        if(auth()->user()->role === 'admin') {
+            return view('users.admin.form', ['user' => $user]);
+        } else {
+            return view('users.player.form', ['user' => $user]);
+        }
     }
 
     public function update(Request $request, string $id)
@@ -68,7 +78,11 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('users.index')->with('success', 'User modifié !');
+        if(auth()->user()->role === 'admin') {
+            return redirect()->route('users.index')->with('success', 'User modifié !');
+        } else {
+            return redirect()->route('users.show', $id)->with('success', 'Modifications enregistrées !');
+        }
     }
 
     public function destroy(string $id)

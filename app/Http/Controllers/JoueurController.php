@@ -62,7 +62,10 @@ class JoueurController extends Controller
         ]);
 
         $joueur = Joueur::findOrFail($id);
-        $joueur->update($request->all());
+        $joueur->update([
+            'nom' => $request->nom,
+            'avatar' => $request->avatar,
+        ]);
 
         return redirect()->route('joueurs.index')->with('success', 'Joueur modifié');
     }
@@ -81,6 +84,6 @@ class JoueurController extends Controller
         $joueur->scoreTotal = 0;
         $joueur->save();
 
-        return redirect()->route('joueurs.index', $id)->with('success', 'Score réinitialisé !');
+        return redirect()->route('joueurs.index')->with('success', 'Score réinitialisé !');
     }
 }

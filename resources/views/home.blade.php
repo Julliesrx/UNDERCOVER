@@ -6,7 +6,7 @@
     <title>Undercover</title>
 </head>
 <body>
-    <h1>Bienvenue {{ auth()->user()->nom }} !</h1>
+    <h1>Bienvenue {{ auth()->user()->username }} !</h1>
 
     <nav>
         <a href="{{ route('joueurs.index') }}">Mes joueurs</a>

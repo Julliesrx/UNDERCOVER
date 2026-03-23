@@ -6,7 +6,7 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Bienvenue {{ auth()->user()->nom }} !</h1>
+    <h1>Bienvenue {{ auth()->user()->username }} !</h1>
 
     <nav>
         <a href="{{ route('users.index') }}">Users</a>

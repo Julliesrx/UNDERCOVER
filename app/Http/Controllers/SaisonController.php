@@ -11,12 +11,12 @@ class SaisonController extends Controller
     public function index()
     {
         $saisons = Saison::all();
-        return view('saisons.index', ['saisons' => $saisons]);
+        return view('saisons.admin.index', ['saisons' => $saisons]);
     }
 
     public function create()
     {
-        return view('saisons.form');
+        return view('saisons.admin.form');
     }
 
     public function store(Request $request)
@@ -42,13 +42,18 @@ class SaisonController extends Controller
         $saison->load(['joueurs' => function($query) {
             $query->orderByPivot('score', 'desc');
         }]);
-        return view('saisons.show', ['saison' => $saison]);
+
+        if(auth()->user()->role === 'admin') {
+            return view('saisons.admin.show', ['saison' => $saison]);
+        } else {
+            return view('saisons.player.show', ['saison' => $saison]);
+        }
     }
 
     public function edit(string $id)
     {
         $saison = Saison::findOrFail($id);
-        return view('saisons.form', ['saison' => $saison]);
+        return view('saisons.admin.form', ['saison' => $saison]);
     }
 
     public function update(Request $request, string $id)

@@ -12,13 +12,18 @@ class PartieController extends Controller
     public function index()
     {
         $parties = Partie::all();
-        return view('parties.index', ['parties' => $parties]);
+        
+        if(auth()->user()->role === 'admin') {
+            return view('parties.admin.index', ['parties' => $parties]);
+        } else {
+            return view('parties.player.index', ['parties' => $parties]);
+        }
     }
 
     public function create()
     {
         $joueurs = Joueur::all();
-        return view('parties.form', ['joueurs' => $joueurs]);
+        return view('parties.player.form', ['joueurs' => $joueurs]);
     }
 
     public function store(Request $request)
@@ -86,7 +91,7 @@ class PartieController extends Controller
             ]);
         }
 
-        return redirect()->route('parties.index')->with('success', 'Partie créée');
+        return redirect()->route('parties.index')->with('success', 'Partie créée'); // afficher pour player la page de jeu !! 
     }
 
     public function show(string $id)
@@ -94,7 +99,11 @@ class PartieController extends Controller
         $partie = Partie::with('joueurs')->findOrFail($id);
         // ajouter potentiellement les joueurs, mots etc ?
 
-        return view('parties.show', ['partie' => $partie]);
+        if(auth()->user()->role === 'admin') {
+            return view('parties.admin.show', ['partie' => $partie]);
+        } else {
+            return view('parties.player.show', ['partie' => $partie]);
+        }
     }
 
     public function edit(string $id)
@@ -121,6 +130,7 @@ class PartieController extends Controller
     public function destroy(string $id)
     {
         $partie = Partie::findOrFail($id);
+        $partie->joueurs()->detach();
         $partie->delete();
 
         return redirect()->route('parties.index')->with('success', 'Partie supprimée !');
