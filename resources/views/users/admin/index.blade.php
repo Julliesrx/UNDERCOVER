@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des users</title>
-</head>
-<body>
+@extends('dashboard') 
+
+@section('title', 'Liste des users')
+
+@section('content')
+
     <h1>Liste des users</h1>
     <a href="{{ route('users.create') }}">Ajouter un user</a>
 
@@ -39,5 +37,5 @@
         <li>Aucun user pour l'instant</li>
         @endforelse
     </ul>
-</body>
-</html>
+
+@endsection

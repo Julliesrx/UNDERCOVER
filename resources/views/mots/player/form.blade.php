@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mots Personnalisés</title>
-</head>
-<body>
+@extends('home') 
+
+@section('title', 'Personnaliser une paire de mots')
+
+@section('content')
     
     @if(isset($mot))
         <form action="{{ route('mots.update', $mot->id_mots) }}" method="POST">
@@ -20,5 +17,5 @@
             <!-- input hidden avec l'id du compte et rectifier dans bdd peut pas etre null -->
             <button type="submit">{{ isset($mot) ? 'Modifier' : 'Ajouter' }}</button>   
         </form>
-</body>
-</html>
+
+@endsection

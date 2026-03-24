@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des parties</title>
-</head>
-<body>
+@extends('home') 
+
+@section('title', 'Historique des parties')
+
+@section('content')
+
     <h1>Liste des parties</h1>
     @if(session('success'))
         <p>{{ session('success') }}</p>
@@ -31,5 +29,5 @@
         <li>Aucune partie pour l'instant</li>
         @endforelse
     </ul>
-</body>
-</html>
+
+@endsection

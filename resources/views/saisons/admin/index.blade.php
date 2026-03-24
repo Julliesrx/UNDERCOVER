@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des saisons</title>
-</head>
-<body>
+@extends('dashboard') 
+
+@section('title', 'Liste des saisons')
+
+@section('content')
+
     <h1>Liste des saisons</h1>
     <a href="{{ route('saisons.create') }}">Créer une saison</a>
 
@@ -41,5 +39,5 @@
         <li>Aucune saison pour l'instant</li>
         @endforelse
     </ul>
-</body>
-</html>
+
+@endsection

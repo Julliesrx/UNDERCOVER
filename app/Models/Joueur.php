@@ -19,7 +19,7 @@ class Joueur extends Model
     }
 
     public function saisons() {
-        return $this->belongsToMany(Saison::class, 'saison_joueur', 'id_joueur', 'id_saison')
+        return $this->belongsToMany(Saison::class, 'saisons_joueurs', 'id_joueur', 'id_saison')
                     ->withPivot('score');
     }
 }

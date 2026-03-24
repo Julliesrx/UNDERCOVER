@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détail d'une partie</title>
-</head>
-<body>
+@extends('home') 
+
+@section('title', 'Détails de la partie')
+
+@section('content')
+
     <h1>Détail de la partie</h1>
 
     <p>{{ $partie->mot->mot1 }} | {{ $partie->mot->mot2 }}</p>
@@ -26,5 +24,5 @@
     </ul>
 
     <a href="{{ route('parties.index') }}">Retour à la liste</a>
-</body>
-</html>
+
+@endsection

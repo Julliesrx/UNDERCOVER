@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer une partie</title>
-</head>
-<body>
+@extends('home') 
+
+@section('title', 'Nouvelle partie')
+
+@section('content')
+
     <h1>Créer une partie</h1>
 
     <form action="{{ route('parties.store') }}" method="POST">
@@ -37,5 +35,5 @@
 
         <button type="submit">Créer la partie</button>
     </form>
-</body>
-</html>
+
+@endsection
