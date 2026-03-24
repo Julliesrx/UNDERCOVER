@@ -17,9 +17,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-    Route::get('/dashboard', function() {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/administration', function() {
+        return view('administration');
+    })->name('administration');
 
     Route::resource('users', UserController::class)->only(['index', 'create', 'store', 'destroy']);
     Route::resource('parties', PartieController::class)->only(['destroy']);
@@ -31,9 +31,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function() {
-        return view('home');
-    })->name('home');
+    Route::get('/dashboard', function() {
+        return view('dashboard');
+    })->name('dashboard');
 
     Route::resource('users', UserController::class)->only(['show', 'edit', 'update']);
     Route::resource('joueurs', JoueurController::class);

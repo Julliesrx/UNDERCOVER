@@ -1,4 +1,4 @@
-@extends('home') 
+@extends('dashboard') 
 
 @section('title', 'Saison en cours')
 

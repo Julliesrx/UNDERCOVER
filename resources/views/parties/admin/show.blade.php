@@ -1,4 +1,4 @@
-@extends('dashboard') 
+@extends('administration') 
 
 @section('title', 'Détails de la partie')
 
