@@ -14,11 +14,13 @@
     <ul>
         @forelse($users as $user)
         <li>
-            <p>{{ $user->nom }}</p>
-            <p>{{ $user->username }}</p>
-            <p>{{ $user->email }}</p>
-            <p>{{ $user->is_banned ? 'Banni' : 'Actif' }}</p>
-            <div>
+            <div class="list-left">
+                <p>Nom : {{ $user->nom }}</p>
+                <p>Username : {{ $user->username }}</p>
+                <p>Email : {{ $user->email }}</p>
+                <p>Compte {{ $user->is_banned ? 'banni' : 'actif' }}</p>
+            </div>
+            <div class="list-right">
                 <a href="{{ route('users.show', $user->id_user) }}">Voir</a>
                 <a href="{{ route('users.edit', $user->id_user) }}">Modifier</a>
                 <form action="{{ route('users.ban', $user->id_user) }}" method="POST">
