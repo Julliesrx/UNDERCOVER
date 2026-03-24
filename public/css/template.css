@@ -45,7 +45,7 @@ body {
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
-    transition: all .4s ease;
+    transition: all .3s ease;
 }
 #content>a:hover {
     border: solid 4px #CAA8C6;
@@ -70,7 +70,7 @@ body {
     background-color: transparent;
     border: solid 2px #100111;
     color: #100111;
-    transition: all .4s ease;
+    transition: all .3s ease;
 }
 #content ul li form button:hover {
     background-color: #100111;
