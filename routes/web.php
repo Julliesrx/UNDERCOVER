@@ -40,4 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('mots', MotsController::class);
     Route::resource('parties', PartieController::class)->only(['index', 'show', 'create', 'store']);
     Route::resource('saisons', SaisonController::class)->only(['show']);
+
+    Route::get('parties/{id}/game', [PartieController::class, 'game'])->name('parties.game');
 });

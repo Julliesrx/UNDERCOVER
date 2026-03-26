@@ -91,7 +91,7 @@ class PartieController extends Controller
             ]);
         }
 
-        return redirect()->route('parties.index')->with('success', 'Partie créée'); // afficher pour player la page de jeu !! 
+        return redirect()->route('parties.game', $partie->id_partie); 
     }
 
     public function show(string $id)
@@ -135,4 +135,10 @@ class PartieController extends Controller
 
         return redirect()->route('parties.index')->with('success', 'Partie supprimée !');
     }
+
+    public function game (string $id)
+    {
+        $partie = Partie::with('joueurs')->findOrFail($id);
+        return view('parties.player.game', ['partie' => $partie]);
+    } 
 }
