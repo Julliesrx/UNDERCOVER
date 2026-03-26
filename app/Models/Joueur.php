@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Joueur extends Model
 {
     protected $primaryKey = 'id_joueur';
-    protected $fillable = ['nom', 'avatar', 'scoreTotal', 'id_user'];
+    protected $fillable = ['nom', 'avatar', 'couleur', 'scoreTotal', 'id_user'];
 
     public function user() {
         return $this->belongsTo(User::class, 'id_user');

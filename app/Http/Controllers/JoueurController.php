@@ -15,7 +15,10 @@ class JoueurController extends Controller
 
     public function create()
     {
-        return view('joueurs.form');
+        $avatars = ["chat_1", "chat_2", "chat_3", "chat_4", "chat_5", "chat_6"];
+        $couleurs = ["#6F347C", "#815CA7", "#5F7497", "#72B6A8", "#547641", "#B0BC78", "#EEC355", "#E39947", "#925833", "#E56999", "#F94245", "#9E9F9D"];
+
+        return view('joueurs.form', compact('avatars', 'couleurs'));
     }
 
     public function store(Request $request)
@@ -29,6 +32,7 @@ class JoueurController extends Controller
         Joueur::create([
             'nom' => $request->nom,
             'avatar' => $request->avatar,
+            'couleur' => $request->couleur,
             'id_user' => auth()->id(),
         ]);
 
@@ -48,8 +52,10 @@ class JoueurController extends Controller
     public function edit(string $id)
     {
         $joueur = Joueur::findOrFail($id);
-    
-        return view('joueurs.form', ['joueur' => $joueur]);
+        $avatars = ["chat_1", "chat_2", "chat_3", "chat_4", "chat_5", "chat_6"];
+        $couleurs = ["#6F347C", "#815CA7", "#5F7497", "#72B6A8", "#547641", "#B0BC78", "#EEC355", "#E39947", "#925833", "#E56999", "#F94245", "#9E9F9D"];
+
+        return view('joueurs.form', compact('joueur', 'avatars', 'couleurs'));
     }
 
     public function update(Request $request, string $id)
@@ -65,6 +71,7 @@ class JoueurController extends Controller
         $joueur->update([
             'nom' => $request->nom,
             'avatar' => $request->avatar,
+            'couleur' => $request->couleur,
         ]);
 
         return redirect()->route('joueurs.index')->with('success', 'Joueur modifié');
@@ -73,6 +80,7 @@ class JoueurController extends Controller
     public function destroy(string $id)
     {
         $joueur = Joueur::findOrFail($id);
+        $joueur->parties()->detach();
         $joueur->delete();
 
         return redirect()->route('joueurs.index')->with('success', 'Joueur supprimé !');
