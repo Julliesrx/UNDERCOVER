@@ -15,7 +15,9 @@
         <li>
             <p>{{ $joueur->nom }}</p>
             <p>{{ $joueur->scoreTotal }}</p>
-            <img src="{{ $joueur->avatar }}" alt=""> 
+            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
+                <img src="avatars/{{ $joueur->avatar }}.png" alt="" style="width: 90px;">
+            </div>
             <div>
                 <!-- <form action="{{ route('joueurs.resetScore', $joueur->id_joueur) }}" method="POST">
                     @csrf

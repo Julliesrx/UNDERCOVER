@@ -91,7 +91,7 @@ class PartieController extends Controller
             ]);
         }
 
-        return redirect()->route('parties.index')->with('success', 'Partie créée'); // afficher pour player la page de jeu !! 
+        return redirect()->route('parties.game', $partie->id_partie); 
     }
 
     public function show(string $id)
@@ -134,5 +134,38 @@ class PartieController extends Controller
         $partie->delete();
 
         return redirect()->route('parties.index')->with('success', 'Partie supprimée !');
+    }
+
+    public function game (string $id)
+    {
+        $partie = Partie::with('joueurs')->findOrFail($id);
+
+        if($partie->role_gagnant !== null) {
+            return redirect()->route('parties.show', $id);
+        }
+
+        return view('parties.player.game', ['partie' => $partie]);
+    } 
+
+    public function terminer(Request $request, string $id)
+    {
+        $partie = Partie::findOrFail($id);
+        $partie->role_gagnant = $request->role_gagnant;
+        $partie->save();
+
+        // Mettre à jour les scores dans x_parties et joueurs
+        foreach($request->joueurs as $joueurData) {
+            $partie->joueurs()->updateExistingPivot($joueurData['id_joueur'], [
+                'score' => $joueurData['score'],
+                'estGagnant' => $joueurData['estGagnant'],
+            ]);
+
+            // Mettre à jour le score total du joueur
+            $joueur = Joueur::findOrFail($joueurData['id_joueur']);
+            $joueur->scoreTotal += $joueurData['score'];
+            $joueur->save();
+        }
+
+        return response()->json(['success' => true]);
     }
 }
