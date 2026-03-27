@@ -42,4 +42,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('saisons', SaisonController::class)->only(['show']);
 
     Route::get('parties/{id}/game', [PartieController::class, 'game'])->name('parties.game');
+    Route::post('parties/{id}/terminer', [PartieController::class, 'terminer'])->name('parties.terminer');
 });
