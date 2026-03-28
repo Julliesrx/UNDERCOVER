@@ -14,7 +14,6 @@
     @endif
             <input type="text" name="mot1" value="{{ old('mot1', $mot->mot1 ?? '') }}">
             <input type="text" name="mot2" value="{{ old('mot2', $mot->mot2 ?? '') }}">
-            <!-- input hidden avec l'id du compte et rectifier dans bdd peut pas etre null -->
             <button type="submit">{{ isset($mot) ? 'Modifier' : 'Ajouter' }}</button>   
         </form>
 

@@ -18,11 +18,6 @@
             <p>{{ $partie->created_at->format('d/m/Y') }}</p>
             <div>
                 <a href="{{ route('parties.show', $partie->id_partie) }}">Voir</a>
-                <form action="{{ route('parties.destroy', $partie->id_partie) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Supprimer</button>
-                </form>
             </div>
         </li>
         @empty

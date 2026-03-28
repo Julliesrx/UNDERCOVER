@@ -43,4 +43,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('parties/{id}/game', [PartieController::class, 'game'])->name('parties.game');
     Route::post('parties/{id}/terminer', [PartieController::class, 'terminer'])->name('parties.terminer');
-});
+    Route::delete('parties/{id}/quitter', [PartieController::class, 'quitter'])->name('parties.quitter');
+    });
