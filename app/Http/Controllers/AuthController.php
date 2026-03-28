@@ -19,11 +19,11 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password], true)) {
             $request->session()->regenerate();
 
             if(auth()->user()->role === 'admin') {
-                return redirect()->route('administration'); 
+                return redirect()->route('users.index'); 
             } else {
                 return redirect()->route('dashboard'); 
             }

@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Joueur {{ $joueur->nom }}')
 
 @section('content')
+
+    <a href="{{ route('joueurs.index') }}"><</a>
 
     <h1>Détail du joueur</h1>
 
@@ -30,6 +32,5 @@
         <button type="submit">Réinitialiser le score</button>
     </form> -->
     <a href="{{ route('joueurs.edit', $joueur->id_joueur) }}">Modifier</a>
-    <a href="{{ route('joueurs.index') }}">Retour à la liste</a>
 
 @endsection

@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <a href="{{ route('saisons.index') }}"><</a>
+
     <h1>{{ $saison->nom }}</h1>
 
     <p>Date de début : {{ $saison->date_debut }}</p>

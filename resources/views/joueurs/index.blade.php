@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Mes joueurs')
 
 @section('content')
+
+    <a href="{{ route('dashboard') }}"><</a>
 
     <h1>Liste des joueurs</h1>
     @if(session('success'))

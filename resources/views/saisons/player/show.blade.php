@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Saison en cours')
 
 @section('content')
+
+    <a href="{{ route('dashboard') }}"><</a>
 
     <h1>{{ $saison->nom }}</h1>
 

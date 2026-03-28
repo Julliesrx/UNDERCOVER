@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Modification du compte')
 
 @section('content')
+
+    <a href="{{ route('users.show', $user->id_user) }}"><</a>
 
     @if(isset($user))
         <form action="{{ route('users.update', $user->id_user) }}" method="POST">

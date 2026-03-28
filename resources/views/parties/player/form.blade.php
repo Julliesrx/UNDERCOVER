@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Nouvelle partie')
 
 @section('content')
+
+    <a href="{{ route('dashboard') }}"><</a>
 
     <h1>Créer une partie</h1>
 
@@ -38,6 +40,7 @@
         <label>Joueurs</label>
         @foreach($joueurs as $joueur)
             <div>
+                <img src="{{ asset('avatars/' . $joueur->avatar . '.png') }}" alt="">
                 <input type="checkbox" name="joueurs[]" value="{{ $joueur->id_joueur }}">
                 <label>{{ $joueur->nom }}</label>
             </div>

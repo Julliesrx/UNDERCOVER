@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Détails de la partie')
 
 @section('content')
+
+    <a href="{{ route('parties.index') }}"><</a>
 
     <h1>Détail de la partie</h1>
 
@@ -22,7 +24,5 @@
         </li>
         @endforeach
     </ul>
-
-    <a href="{{ route('parties.index') }}">Retour à la liste</a>
 
 @endsection

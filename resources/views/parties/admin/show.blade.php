@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <a href="{{ route('parties.index') }}"><</a>
+
     <h1>Détail de la partie</h1>
 
     <p>{{ $partie->mot->mot1 }} | {{ $partie->mot->mot2 }}</p>

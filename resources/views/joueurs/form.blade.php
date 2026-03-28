@@ -1,9 +1,11 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Personnalisation d\'un joueur')
 
 @section('content')
     
+    <a href="{{ route('joueurs.index') }}"><</a>
+
     @if(isset($joueur))
         <form action="{{ route('joueurs.update', $joueur->id_joueur) }}" method="POST">
         @csrf
