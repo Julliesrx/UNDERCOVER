@@ -16,6 +16,9 @@
     <ul>
         @foreach($partie->joueurs as $joueur)
         <li>
+            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
+                <img src="{{ asset('avatars/' . $joueur->avatar . '.png') }}" alt="">
+            </div>
             <p>{{ $joueur->nom }}</p>
             <p>Rôle : {{ $joueur->pivot->role }}</p>
             <p>Mot reçu : {{ $joueur->pivot->mot_recu ?? 'aucun' }}</p>

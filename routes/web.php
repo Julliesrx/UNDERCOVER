@@ -32,7 +32,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function() {
-        return view('dashboard');
+        $saison = \App\Models\Saison::where('is_active', true)->first();
+        return view('dashboard', ['saison' => $saison]);
     })->name('dashboard');
 
     Route::resource('users', UserController::class)->only(['show', 'edit', 'update']);

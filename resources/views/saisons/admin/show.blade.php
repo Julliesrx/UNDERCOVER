@@ -16,6 +16,9 @@
     <ul>
         @forelse($saison->joueurs as $joueur)
         <li>
+            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
+                <img src="{{ asset('avatars/' . $joueur->avatar . '.png') }}" alt="">
+            </div>
             <p>{{ $joueur->nom }}</p>
             <p>Score : {{ $joueur->pivot->score }}</p>
             <a href="{{ route('joueurs.show', $joueur->id_joueur) }}">Voir le joueur</a>
