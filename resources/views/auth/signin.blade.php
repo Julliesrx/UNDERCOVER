@@ -9,17 +9,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/template.css') }}">
-    <title>Connexion</title>
+    <title>Inscription</title>
 </head>
 <body>
-    <h1>Connexion</h1>
+    <h1>Inscription</h1>
 
     @if($errors->any())
         <p>{{ $errors->first() }}</p>
     @endif
 
-    <form action="{{ route('login') }}" method="POST">
+    <form action="{{ route('register') }}" method="POST">
         @csrf
+
+        <label>Nom</label>
+        <input type="text" name="nom" value="{{ old('nom') }}">
+
+        <label>Username</label>
+        <input type="text" name="username" value="{{ old('username') }}">
 
         <label>Email</label>
         <input type="email" name="email" value="{{ old('email') }}">
@@ -27,9 +33,12 @@
         <label>Mot de passe</label>
         <input type="password" name="password">
 
-        <button type="submit">Se connecter</button>
+        <label>Confirmer le mot de passe</label>
+        <input type="password" name="password_confirmation">
+
+        <button type="submit">S'inscrire</button>
     </form>
 
-    <a href="{{ route('login') }}">Pas de compte ? Créer un compte</a>
+    <a href="{{ route('register') }}">Déjà un compte ? Se connecter</a>
 </body>
 </html>

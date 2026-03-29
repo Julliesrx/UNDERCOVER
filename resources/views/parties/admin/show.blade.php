@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <a href="{{ route('parties.index') }}"><</a>
+
     <h1>Détail de la partie</h1>
 
     <p>{{ $partie->mot->mot1 }} | {{ $partie->mot->mot2 }}</p>
@@ -14,6 +16,9 @@
     <ul>
         @foreach($partie->joueurs as $joueur)
         <li>
+            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
+                <img src="{{ asset('avatars/profil/' . $joueur->avatar . '.png') }}" alt="">
+            </div>
             <p>{{ $joueur->nom }}</p>
             <p>Rôle : {{ $joueur->pivot->role }}</p>
             <p>Mot reçu : {{ $joueur->pivot->mot_recu ?? 'aucun' }}</p>

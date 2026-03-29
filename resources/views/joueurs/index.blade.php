@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Mes joueurs')
 
 @section('content')
+
+    <a href="{{ route('dashboard') }}"><</a>
 
     <h1>Liste des joueurs</h1>
     @if(session('success'))
@@ -15,8 +17,8 @@
         <li>
             <p>{{ $joueur->nom }}</p>
             <p>{{ $joueur->scoreTotal }}</p>
-            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
-                <img src="avatars/{{ $joueur->avatar }}.png" alt="" style="width: 90px;">
+            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }}; overflow: hidden">
+                <img src="avatars/profil/{{ $joueur->avatar }}.png" alt="" style="width: 120px;">
             </div>
             <div>
                 <!-- <form action="{{ route('joueurs.resetScore', $joueur->id_joueur) }}" method="POST">

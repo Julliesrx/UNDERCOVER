@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Banque de mots')
 
 @section('content')
+
+    <a href="{{ route('dashboard') }}"><</a>
 
     <h1>Liste des paires de mots</h1>
     @if(session('success'))

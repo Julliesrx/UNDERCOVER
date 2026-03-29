@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -67,9 +68,27 @@
             @csrf
             <button type="submit">Se déconnecter</button>
         </form> -->
+=======
+@extends('template') 
 
-    </div>
+@section('title', 'Nouvelle partie')
 
+@section('content')
+        
+        <a href="{{ route('parties.create') }}">Play</a>
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
+
+            @if($saison)
+                <a href="{{ route('saisons.show', $saison->id_saison) }}">
+                    <p>Saison en cours : {{ $saison->nom }}</p>
+                    <p>Depuis le : {{ $saison->date_debut }}</p>
+                </a>
+            @else
+                <p>Aucune saison en cours</p>
+            @endif
+        </div>
+
+<<<<<<< HEAD
     <nav>
         <a href="{{ route('parties.index') }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 596.98 576.69">
                 <defs>
@@ -141,3 +160,6 @@
 </body>
 
 </html>
+=======
+@endsection
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce

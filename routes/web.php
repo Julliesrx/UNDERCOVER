@@ -9,12 +9,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SaisonController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/login', [AuthController::class, 'form'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/register', [AuthController::class, 'formRegister'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/administration', function() {
@@ -32,7 +34,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function() {
-        return view('dashboard');
+        $saison = \App\Models\Saison::where('is_active', true)->first();
+        return view('dashboard', ['saison' => $saison]);
     })->name('dashboard');
 
     Route::resource('users', UserController::class)->only(['show', 'edit', 'update']);
@@ -43,4 +46,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('parties/{id}/game', [PartieController::class, 'game'])->name('parties.game');
     Route::post('parties/{id}/terminer', [PartieController::class, 'terminer'])->name('parties.terminer');
-});
+    Route::delete('parties/{id}/quitter', [PartieController::class, 'quitter'])->name('parties.quitter');
+    });

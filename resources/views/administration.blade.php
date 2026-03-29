@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+=======
+    <link rel="icon" type="image/png" href="{{ asset('undercover-favicon.png') }}">
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
     <link rel="stylesheet" href="https://use.typekit.net/jib5pzl.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +18,7 @@
 
 <body>
     <div id="header">
+<<<<<<< HEAD
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 501.27 684.05">
             <defs>
                 <style>
@@ -56,10 +61,18 @@
                 </g>
             </g>
         </svg>
+=======
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 501.27 684.05"><defs><style>.cls-1,.cls-2{fill:#caa8c6;}.cls-1,.cls-5{stroke:#100111;stroke-miterlimit:10;stroke-width:24.85px;}.cls-3{clip-path:url(#clip-path);}.cls-4{fill:#100111;}.cls-5{fill:none;}</style><clipPath id="clip-path"><path class="cls-1" d="M348,142.26A170.22,170.22,0,1,0,126.52,343.38l-.36,324.84,330.7-80.86-150.2-288A170.08,170.08,0,0,0,348,142.26Z"/></clipPath></defs><g id="Calque_2" data-name="Calque 2"><g id="Calque_1-2" data-name="Calque 1"><path class="cls-2" d="M348,142.26A170.22,170.22,0,1,0,126.52,343.38l-.36,324.84,330.7-80.86-150.2-288A170.08,170.08,0,0,0,348,142.26Z"/><g class="cls-3"><path class="cls-4" d="M434.09,617.33c-19.88-15.25-40.26-26-53.12-48.68-8.64-15.22-14.3-31.91-21.4-47.91-5.68-12.77-12.5-25.38-21.92-35.59a75.43,75.43,0,0,0-7.62-7.22c-13.54-11.09-32.53-16.81-49-10.91-15.06,5.4-26,20.59-26.48,36.58-.11,4,.43,8.12,2.5,11.52s5.91,5.94,9.88,5.57c7.39-.68,10.53-9.68,16.38-14.24,8.12-6.33,20.66-2.8,27.75,4.65s10.27,17.68,13.86,27.33c12.23,32.86,31.82,64.84,58.43,87.88,27.73,24,61.08,40.57,95.45,52.76l5.46,1.89c5.72-7.18,11.6-14.19,17-21.57A446.42,446.42,0,0,1,434.09,617.33Z"/><path class="cls-4" d="M487.11,344.29,395.26,155.18c-41.23-55.45-110-89.27-179.13-88q10.94,33.3,21.88,66.59c-24.91,9.56-44.16,32.59-49.16,58.8L108.67,181.3c7.66,31.07,15.44,62.46,30,90.95C199.16,390.27,382,400,487.11,344.29Z"/></g><path class="cls-5" d="M348,142.26A170.22,170.22,0,1,0,126.52,343.38l-.36,324.84,330.7-80.86-150.2-288A170.08,170.08,0,0,0,348,142.26Z"/></g></g></svg>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">Se déconnecter</button>
+        </form>
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
     </div>
 
     <div id="content">
 
+<<<<<<< HEAD
         @yield('content')
 
         <!-- <h1>Bienvenue {{ auth()->user()->username }} !</h1> -->
@@ -69,6 +82,10 @@
             <button type="submit">Se déconnecter</button>
         </form> -->
 
+=======
+        @yield('content') 
+        
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
     </div>
 
     <nav>

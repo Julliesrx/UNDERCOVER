@@ -92,6 +92,6 @@ class JoueurController extends Controller
         $joueur->scoreTotal = 0;
         $joueur->save();
 
-        return redirect()->route('joueurs.index')->with('success', 'Score réinitialisé !');
+        return redirect()->route('users.show', $joueur->id_user)->with('success', 'Score réinitialisé !');
     }
 }

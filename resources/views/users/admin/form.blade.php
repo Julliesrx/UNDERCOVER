@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <a href="{{ route('users.index') }}"><</a>
+
     @if(isset($user))
         <form action="{{ route('users.update', $user->id_user) }}" method="POST">
         @csrf

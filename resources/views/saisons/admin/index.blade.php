@@ -5,7 +5,11 @@
 @section('content')
 
     <h1>Liste des saisons</h1>
-    <a href="{{ route('saisons.create') }}">Créer une saison</a>
+    @if(!$saisonActive)
+        <a href="{{ route('saisons.create') }}">Créer une saison</a>
+    @else
+        <p>Une saison est déjà en cours — clôturez-la avant d'en créer une nouvelle.</p>
+    @endif
 
     @if(session('success'))
         <p>{{ session('success') }}</p>

@@ -4,6 +4,8 @@
 
 @section('content')
 
+    <a href="{{ route('saisons.index') }}"><</a>
+
     @if(isset($saison))
         <form action="{{ route('saisons.update', $saison->id_saison) }}" method="POST">
         @csrf

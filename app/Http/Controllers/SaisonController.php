@@ -11,7 +11,9 @@ class SaisonController extends Controller
     public function index()
     {
         $saisons = Saison::all();
-        return view('saisons.admin.index', ['saisons' => $saisons]);
+        $saisonActive = Saison::where('is_active', true)->first();
+        
+        return view('saisons.admin.index', ['saisons' => $saisons, 'saisonActive' => $saisonActive]);
     }
 
     public function create()
@@ -21,6 +23,11 @@ class SaisonController extends Controller
 
     public function store(Request $request)
     {
+
+        if(Saison::where('is_active', true)->exists()) {
+            return back()->withErrors(['nom' => 'Une saison est déjà en cours, clôturez-la avant d\'en créer une nouvelle.']);
+        }
+
         $request->validate([
             'nom' => 'required|string|max:50',
             'date_fin' => 'nullable|date',

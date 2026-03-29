@@ -1,9 +1,11 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Personnaliser une paire de mots')
 
 @section('content')
     
+    <a href="{{ route('mots.index') }}"><</a>
+
     @if(isset($mot))
         <form action="{{ route('mots.update', $mot->id_mots) }}" method="POST">
         @csrf

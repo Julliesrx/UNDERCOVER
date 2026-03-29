@@ -1,8 +1,10 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Saison en cours')
 
 @section('content')
+
+    <a href="{{ route('dashboard') }}"><</a>
 
     <h1>{{ $saison->nom }}</h1>
 
@@ -14,6 +16,9 @@
     <ul>
         @forelse($saison->joueurs as $joueur)
         <li>
+            <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
+                <img src="{{ asset('avatars/' . $joueur->avatar . '.png') }}" alt="">
+            </div>
             <p>{{ $joueur->nom }}</p>
             <p>Score : {{ $joueur->pivot->score }}</p>
             <a href="{{ route('joueurs.show', $joueur->id_joueur) }}">Voir le joueur</a>
@@ -22,8 +27,5 @@
         <li>Aucun joueur pour cette saison</li>
         @endforelse
     </ul>
-
-    <a href="{{ route('saisons.edit', $saison->id_saison) }}">Modifier</a>
-    <a href="{{ route('saisons.index') }}">Retour à la liste</a>
 
 @endsection

@@ -1,14 +1,15 @@
-@extends('dashboard') 
+@extends('template') 
 
 @section('title', 'Historique des parties')
 
 @section('content')
 
+    <a href="{{ route('dashboard') }}"><</a>
+
     <h1>Liste des parties</h1>
     @if(session('success'))
         <p>{{ session('success') }}</p>
     @endif
-    <a href="{{ route('parties.create') }}">Créer une partie</a>
 
     <ul>
         @forelse($parties as $partie)
@@ -18,11 +19,6 @@
             <p>{{ $partie->created_at->format('d/m/Y') }}</p>
             <div>
                 <a href="{{ route('parties.show', $partie->id_partie) }}">Voir</a>
-                <form action="{{ route('parties.destroy', $partie->id_partie) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Supprimer</button>
-                </form>
             </div>
         </li>
         @empty

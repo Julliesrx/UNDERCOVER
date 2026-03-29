@@ -22,7 +22,7 @@ class PartieController extends Controller
 
     public function create()
     {
-        $joueurs = Joueur::all();
+        $joueurs = Joueur::where('id_user', auth()->id())->get();
         return view('parties.player.form', ['joueurs' => $joueurs]);
     }
 
@@ -108,23 +108,12 @@ class PartieController extends Controller
 
     public function edit(string $id)
     {
-        // $partie = Partie::findOrFail($id);
-        // // possible de editer ???
-        // return view('parties.form', ['partie' => $partie]);
+        //
     }
 
     public function update(Request $request, string $id)
     {
-        // $request->validate([
-        //     'mot1' => 'required|string|max:50',
-        //     'mot2' => 'required|string|max:50',
-        //     // ajouter plus tard l'id du user authentifié ??
-        // ]);
-
-        // $mot = Mot::findOrFail($id);
-        // $mot->update($request->all());
-
-        // return redirect()->route('mots.index')->with('success', 'Paire de mots modifiée');
+        //
     }
 
     public function destroy(string $id)
@@ -167,5 +156,19 @@ class PartieController extends Controller
         }
 
         return response()->json(['success' => true]);
+    }
+
+    public function quitter(string $id)
+    {
+        $partie = Partie::findOrFail($id);
+
+        if($partie->id_user !== auth()->id() || $partie->role_gagnant !== null) {
+            return redirect()->route('dashboard');
+        }
+        
+        $partie->joueurs()->detach();
+        $partie->delete();
+        
+        return redirect()->route('dashboard');
     }
 }
