@@ -23,27 +23,29 @@
         </form>
     </div>
 
-    <div id="phase-decouverte">
-        <div id="carousel-cartes">
+    <section>
+        <div id="phase-decouverte">
+            <div id="carousel-cartes">
 
-        </div>
-    </div>
-
-    <div id="phase-jeu" style="display: none;">
-        <div id="liste-joueurs">
-            <!-- Les joueurs actifs s'affichent ici, générés en JS -->
-        </div>
-
-        <div id="popup-elimination" style="display:none">
-            <div id="popup-contenu">
-                <!-- Contenu de la popup selon le rôle éliminé -->
             </div>
         </div>
-    </div>
 
-    <div id="phase-fin">
+        <div id="phase-jeu" style="display: none;">
+            <div id="liste-joueurs">
+                <!-- Les joueurs actifs s'affichent ici, générés en JS -->
+            </div>
 
-    </div>
+            <div id="popup-elimination" style="display:none">
+                <div id="popup-contenu">
+                    <!-- Contenu de la popup selon le rôle éliminé -->
+                </div>
+            </div>
+        </div>
+
+        <div id="phase-fin">
+
+        </div>
+    </section>
 
     <script>
 
@@ -68,16 +70,18 @@
 
                 carte.innerHTML = `
                 <div class="carte-inner">
-                    <div class="carte-face-avant">
+                    <div class="carte-face-avant" style="background-color: ${joueur.couleur};">
                         <p>${joueur.nom}</p>
-                        <img src="avatars/carte/${joueur.avatar}.png" alt="${joueur.nom}" qtyle="width: 100px;">
+                        <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
+                            <img src="/avatars/carte/${joueur.avatar}.png" alt="" style="width: 120px;">
+                        </div>  
                         <p>Clique pour voir ton mot</p>
                     </div>
-                    <div class="carte-face-arriere">
+                    <div class="carte-face-arriere" style="background-color: ${joueur.couleur};">
                         <p>${joueur.pivot.mot_recu ?? 'Mr White'}</p>
-                        </div>
                     </div>
-                    <button onclick="event.stopPropagation(); carteVue(${index})">J'ai lu !</button>
+                </div>
+                <button onclick="event.stopPropagation(); carteVue(${index})">J'ai lu !</button>
                 `;
 
                 carousel.appendChild(carte);
@@ -171,8 +175,8 @@
                 div.id = `joueur-${joueur.id_joueur}`;
 
                 div.innerHTML = `
-                    <div class="avatar-joueur" style="background-color: ${joueur.couleur}">
-                        <img src="/avatars/profil/${joueur.avatar}.png" alt="${joueur.nom}">
+                    <div class="avatar-joueur" style="background-color: ${joueur.couleur}; width: 120px;">
+                        <img src="/avatars/profil/${joueur.avatar}.png" alt="${joueur.nom}" style="width: 120px;">
                     </div>
                     <p>${joueur.nom}</p>
                     <button onclick="confirmerElimination(${joueur.id_joueur})">Éliminer</button>

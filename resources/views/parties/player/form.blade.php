@@ -40,7 +40,9 @@
         <label>Joueurs</label>
         @foreach($joueurs as $joueur)
             <div>
-                <img src="{{ asset('avatars/profil/' . $joueur->avatar . '.png') }}" alt="">
+                <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }}; overflow: hidden">
+                    <img src="{{ asset('avatars/profil/' . $joueur->avatar . '.png') }}" alt="" style="width: 120px;">
+                </div>                
                 <input type="checkbox" name="joueurs[]" value="{{ $joueur->id_joueur }}">
                 <label>{{ $joueur->nom }}</label>
             </div>
