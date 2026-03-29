@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('undercover-favicon.png') }}">
     <link rel="stylesheet" href="https://use.typekit.net/jib5pzl.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +70,7 @@
                 <div class="carte-inner">
                     <div class="carte-face-avant">
                         <p>${joueur.nom}</p>
-                        <img src="avatars/${joueur.avatar}.png" alt="${joueur.nom}" qtyle="width: 100px;">
+                        <img src="avatars/carte/${joueur.avatar}.png" alt="${joueur.nom}" qtyle="width: 100px;">
                         <p>Clique pour voir ton mot</p>
                     </div>
                     <div class="carte-face-arriere">
@@ -171,7 +172,7 @@
 
                 div.innerHTML = `
                     <div class="avatar-joueur" style="background-color: ${joueur.couleur}">
-                        <img src="/avatars/${joueur.avatar}.png" alt="${joueur.nom}">
+                        <img src="/avatars/profil/${joueur.avatar}.png" alt="${joueur.nom}">
                     </div>
                     <p>${joueur.nom}</p>
                     <button onclick="confirmerElimination(${joueur.id_joueur})">Éliminer</button>
@@ -318,7 +319,7 @@
             // Texte selon le rôle gagnant
             const messages = {
                 'civil': 'Les civils ont gagné !',
-                'undercover': 'L\'undercover a gagné !',
+                'undercover': 'Les undercovers ont gagné !',
                 'mrwhite': 'Mr White a gagné !'
             };
 
@@ -330,7 +331,7 @@
 
                 <div id="recap-mots">
                     <p>Mot des civils : <strong>${partie.mot_civil}</strong></p>
-                    <p>Mot de l'undercover : <strong>${partie.mot_undercover}</strong></p>
+                    <p>Mot des undercover : <strong>${partie.mot_undercover}</strong></p>
                 </div>
 
                 <h3>Classement</h3>
@@ -338,7 +339,7 @@
                     ${joueursTriés.map((joueur, index) => `
                         <li>
                             <div class="avatar-joueur" style="background-color: ${joueur.couleur}">
-                                <img src="/avatars/${joueur.avatar}.png" alt="${joueur.nom}">
+                                <img src="/avatars/profil/${joueur.avatar}.png" alt="${joueur.nom}">
                             </div>
                             <p>${index + 1}. ${joueur.nom}</p>
                             <p>Rôle : ${joueur.pivot.role}</p>

@@ -40,7 +40,7 @@
         <label>Joueurs</label>
         @foreach($joueurs as $joueur)
             <div>
-                <img src="{{ asset('avatars/' . $joueur->avatar . '.png') }}" alt="">
+                <img src="{{ asset('avatars/profil/' . $joueur->avatar . '.png') }}" alt="">
                 <input type="checkbox" name="joueurs[]" value="{{ $joueur->id_joueur }}">
                 <label>{{ $joueur->nom }}</label>
             </div>

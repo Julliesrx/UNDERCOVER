@@ -54,7 +54,7 @@
 
             function updateAvatar() {
                 const img = document.getElementById('avatar-img');
-                img.src = `/avatars/${avatars[avatarIndex]}.png`;
+                img.src = `/avatars/profil/${avatars[avatarIndex]}.png`;
                 document.getElementById('avatar-choisi').value = avatars[avatarIndex];
             }
 

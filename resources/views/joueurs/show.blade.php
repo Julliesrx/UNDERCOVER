@@ -10,7 +10,7 @@
 
     <p>{{ $joueur->nom }}</p>
     <div id="avatar-display" style="border-radius: 50%; width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; background-color: {{ $joueur->couleur }};">
-        <img src="{{ asset('avatars/' . $joueur->avatar . '.png') }}" alt="" style="width: 90px;">
+        <img src="{{ asset('avatars/profil/' . $joueur->avatar . '.png') }}" alt="" style="width: 90px;">
     </div>
     <p>{{ $joueur->scoreTotal }}</p>
 
