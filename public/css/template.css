@@ -164,3 +164,21 @@ nav a svg {
 .couleur-option.selected {
     border: 3px solid #1d1d1b;
 }
+
+
+/* RESPONSIVE */ 
+
+@media screen AND (min-width: 1025px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #content {
+        width: 50vw;
+    }
+    nav {
+        justify-content: center;
+        gap: 150px;
+    }
+}

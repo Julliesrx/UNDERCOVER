@@ -161,7 +161,7 @@ class PartieController extends Controller
     public function quitter(string $id)
     {
         $partie = Partie::findOrFail($id);
-        
+
         if($partie->id_user !== auth()->id() || $partie->role_gagnant !== null) {
             return redirect()->route('dashboard');
         }
