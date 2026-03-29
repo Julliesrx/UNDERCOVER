@@ -20,6 +20,14 @@ class AuthController extends Controller
         ]);
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password], true)) {
+                
+            if(auth()->user()->is_banned) {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Votre compte a été banni.',
+                ]);
+            }
+
             $request->session()->regenerate();
 
             if(auth()->user()->role === 'admin') {
