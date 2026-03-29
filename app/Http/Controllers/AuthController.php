@@ -50,4 +50,32 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function formRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:50',
+            'username' => 'required|string|max:50|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        User::create([
+            'nom' => $request->nom,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'player',
+        ]);
+
+        // Connecter automatiquement après inscription
+        Auth::attempt(['email' => $request->email, 'password' => $request->password], true);
+
+        return redirect()->route('dashboard');
+    }
 }
