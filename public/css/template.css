@@ -7,7 +7,7 @@
 
 body {
     background-color: #F3F2ED;
-    width: 100vw;
+    width: 90vw;
     height: 100vh;
     overflow: hidden;
 }
@@ -163,4 +163,19 @@ nav a svg {
 
 .couleur-option.selected {
     border: 3px solid #1d1d1b;
+}
+
+/* form mots */
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    align-items: center;
+}
+
+form label {
+    font-family: fisterra-morte, sans-serif;
+    font-size:1.2rem;
 }

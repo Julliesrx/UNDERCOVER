@@ -28,5 +28,5 @@
         </li>
         @endforelse
     </ul>
-
+    
 @endsection
