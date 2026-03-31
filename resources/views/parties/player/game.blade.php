@@ -32,12 +32,12 @@
 
         <div id="phase-jeu" style="display: none;">
             <div id="liste-joueurs">
-                <!-- Les joueurs actifs s'affichent ici, générés en JS -->
+                
             </div>
 
             <div id="popup-elimination" style="display:none">
                 <div id="popup-contenu">
-                    <!-- Contenu de la popup selon le rôle éliminé -->
+
                 </div>
             </div>
         </div>
@@ -102,31 +102,25 @@
                 const diff = index - carteActuelle;
                 
                 if(diff === 0) {
-                    // Carte actuelle → au centre, grande
                     carte.style.transform = 'translateX(0) scale(1) rotateY(0deg)';
-                    // carte.style.opacity = '1';
                     carte.style.zIndex = '3';
                     carte.style.pointerEvents = 'auto';
                 } else if(diff === 1) {
-                    // Carte suivante → droite, bien espacée
                     carte.style.transform = 'translateX(120%) scale(0.8) rotateY(30deg)';
                     carte.style.opacity = '1';
                     carte.style.zIndex = '2';
-                    carte.style.pointerEvents = 'none'; // pas cliquable
+                    carte.style.pointerEvents = 'none'; 
                 } else if(diff === -1) {
-                    // Carte précédente → gauche, bien espacée
                     carte.style.transform = 'translateX(-120%) scale(0.8) rotateY(-30deg)';
                     carte.style.opacity = '1';
                     carte.style.zIndex = '2';
-                    carte.style.pointerEvents = 'none'; // pas cliquable
+                    carte.style.pointerEvents = 'none'; 
                 } else if(diff < -1) {
-                    // Cartes lointaines passées → cachées à GAUCHE
                     carte.style.transform = 'translateX(-120%) scale(0.7)';
                     carte.style.opacity = '0';
                     carte.style.zIndex = '1';
                     carte.style.pointerEvents = 'none';
                 } else {
-                    // Cartes lointaines à venir → cachées à DROITE
                     carte.style.transform = 'translateX(120%) scale(0.7)';
                     carte.style.opacity = '0';
                     carte.style.zIndex = '1';
@@ -137,7 +131,6 @@
 
         function carteVue(index) {
             
-            // Retourner la carte face cachée
             const carte = document.getElementById(`carte-${index}`);
             carte.classList.remove('retournee');
 
@@ -145,7 +138,6 @@
                 carteActuelle++;
         
                 if(carteActuelle >= joueurs.length) {
-                    // Tous les joueurs ont vu leur mot → passer à la phase jeu
                     setTimeout(() => {
                         passerPhaseJeu();
                     }, 800);
@@ -214,7 +206,6 @@
             const contenu = document.getElementById('popup-contenu');
 
             if(joueur.pivot.role === 'mrwhite') {
-                // Mr White peut tenter de deviner le mot civil
                 contenu.innerHTML = `
                     <p>${joueur.nom} était <strong>Mr White</strong> !</p>
                     <p>Il peut tenter de deviner le mot des civils :</p>
@@ -223,7 +214,6 @@
                 `;
                 popup.style.display = 'block';
             } else {
-                // Civil ou undercover → on révèle et on vérifie les conditions
                 contenu.innerHTML = `
                     <p>${joueur.nom} était <strong>${joueur.pivot.role}</strong> !</p>
                     <button onclick="continuerApresElimination(${idJoueur})">Continuer</button>
@@ -268,13 +258,10 @@
             const nbJoueursActifs = joueursActifs.length;
 
             if(nbUndercoversActifs === 0 && nbMrWhiteActifs === 0) {
-                // Plus d'undercovers ni de mr white → civils gagnent
                 terminerPartie('civil');
             } else if(nbUndercoversActifs >= nbCivilsActifs) {
-                // Autant ou plus d'undercovers que de civils → undercovers gagnent
                 terminerPartie('undercover');
             } else {
-                // On continue
                 afficherPhaseJeu();
             }
         }
@@ -303,7 +290,6 @@
                     j.pivot.estGagnant = j.pivot.role === roleGagnant;
                 });
 
-                // Passer à la phase fin
                 document.getElementById('phase-jeu').style.display = 'none';
                 document.getElementById('phase-fin').style.display = 'block';
                 afficherPhaseFin(roleGagnant);
@@ -312,22 +298,20 @@
 
         function calculerScore(joueur, roleGagnant) {
             if(joueur.pivot.role === roleGagnant) {
-                return 10; // gagnant → 10 points
+                return 10; 
             }
-            return 0; // perdant → 0 points
+            return 0; 
         }
 
         function afficherPhaseFin(roleGagnant) {
             const phaseFin = document.getElementById('phase-fin');
             
-            // Texte selon le rôle gagnant
             const messages = {
                 'civil': 'Les civils ont gagné !',
                 'undercover': 'Les undercovers ont gagné !',
                 'mrwhite': 'Mr White a gagné !'
             };
 
-            // Trier les joueurs par score décroissant
             const joueursTriés = [...joueurs].sort((a, b) => b.pivot.score - a.pivot.score);
 
             phaseFin.innerHTML = `

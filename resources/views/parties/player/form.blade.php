@@ -55,16 +55,11 @@
 
         updateLimites();
 
-        function modifier(champ, delta) {
+        function modifier(champ, nb) {
             const input = document.getElementById(champ);
             const span = document.getElementById(champ + '_val');
             
-            let valeur = parseInt(input.value) + delta;
-            const min = parseInt(input.min) || 0;
-            const max = parseInt(input.max);
-            
-            // Respecter les limites
-            valeur = Math.max(min, Math.min(max, valeur));
+            let valeur = parseInt(input.value) + nb;
             
             input.value = valeur;
             span.textContent = valeur;
@@ -101,10 +96,13 @@
                 const nbJoueurs = parseInt(document.getElementById('nbJoueurs').value);
                 const cochees = document.querySelectorAll('input[name="joueurs[]"]:checked').length;
                 
-                // Désactiver les cases non cochées si on a atteint le max
                 document.querySelectorAll('input[name="joueurs[]"]').forEach(cb => {
                     if(!cb.checked) {
-                        cb.disabled = cochees >= nbJoueurs;
+                        if(cochees >= nbJoueurs) {
+                            cb.disabled = true;
+                        } else {
+                            cb.disabled = false; 
+                        }
                     }
                 });
             });
