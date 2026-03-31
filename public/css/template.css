@@ -28,8 +28,13 @@
 }
 
 body {
+<<<<<<< HEAD
     background-color: var(--blanc);
     width: 100vw;
+=======
+    background-color: #F3F2ED;
+    width: 90vw;
+>>>>>>> 8b71687e22a1abc202f8308bca3a5442caafd223
     height: 100vh;
     overflow: hidden;
 }
@@ -193,7 +198,26 @@ nav a svg {
     border: 3px solid #1d1d1b;
 }
 
+<<<<<<< HEAD
 /* DASHBOARD  */
+=======
+<<<<<<< HEAD
+/* form mots */
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    align-items: center;
+}
+
+form label {
+    font-family: fisterra-morte, sans-serif;
+    font-size:1.2rem;
+}
+=======
+>>>>>>> 8b71687e22a1abc202f8308bca3a5442caafd223
 
 .dashboard-content {
     display: flex;
@@ -204,6 +228,7 @@ nav a svg {
     padding-top: 8vh;
 }
 
+<<<<<<< HEAD
 #content .btn-play {
     display: flex;
     justify-content: center;
@@ -797,3 +822,20 @@ nav a svg {
 .btn-supprimer-text:hover {
     color: var(--noir);
 }
+=======
+@media screen AND (min-width: 1025px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #content {
+        width: 50vw;
+    }
+    nav {
+        justify-content: center;
+        gap: 150px;
+    }
+}
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
+>>>>>>> 8b71687e22a1abc202f8308bca3a5442caafd223

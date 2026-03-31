@@ -1,16 +1,34 @@
+<<<<<<< HEAD
+@extends('dashboard')
+=======
 @extends('template') 
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
 
 @section('title', 'Nouvelle partie')
 
 @section('content')
 
+<<<<<<< HEAD
+<h1>Créer une partie</h1>
+=======
     <a href="{{ route('dashboard') }}"><</a>
 
     <h1>Créer une partie</h1>
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
 
-    <form action="{{ route('parties.store') }}" method="POST">
-        @csrf
+<form action="{{ route('parties.store') }}" method="POST">
+    @csrf
 
+<<<<<<< HEAD
+    <label>Nombre de joueurs : <span id="nbJoueurs_val">3</span></label>
+    <input type="range" name="nbJoueurs" min="3" max="15" value="3" oninput="document.getElementById('nbJoueurs_val').textContent = this.value">
+
+    <label>Nombre d'undercovers</label>
+    <input type="number" name="nbUndercovers" min="1" max="3" value="{{ old('nbUndercovers') }}">
+
+    <label>Nombre de Mr White</label>
+    <input type="number" name="nbMrWhite" min="0" max="1" value="{{ old('nbMrWhite') }}">
+=======
         <label>Nombre de joueurs : <span id="nbJoueurs_val">3</span></label>
         <input type="range" id="nbJoueurs" name="nbJoueurs" min="3" max="15" value="3" oninput="document.getElementById('nbJoueurs_val').textContent = this.value; updateLimites()">
         
@@ -29,14 +47,24 @@
             <input type="hidden" id="nbMrWhite" name="nbMrWhite" value="0">
             <button type="button" onclick="modifier('nbMrWhite', 1)">+</button>
         </div>
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
 
-        <label>Option mots</label>
-        <select name="option_mots">
-            <option value="base">Mots de base</option>
-            <option value="perso">Mots personnalisés</option>
-            <option value="mix">Mix</option>
-        </select>
+    <label>Option mots</label>
+    <select name="option_mots">
+        <option value="base">Mots de base</option>
+        <option value="perso">Mots personnalisés</option>
+        <option value="mix">Mix</option>
+    </select>
 
+<<<<<<< HEAD
+    <label>Joueurs</label>
+    @foreach($joueurs as $joueur)
+    <div>
+        <input type="checkbox" name="joueurs[]" value="{{ $joueur->id_joueur }}">
+        <label>{{ $joueur->nom }}</label>
+    </div>
+    @endforeach
+=======
         <label>Joueurs</label>
         @foreach($joueurs as $joueur)
             <div>
@@ -47,9 +75,10 @@
                 <label>{{ $joueur->nom }}</label>
             </div>
         @endforeach
+>>>>>>> cf1f2ef0b65bc9feed24dfc9ccd0a9343af746ce
 
-        <button type="submit">Créer la partie</button>
-    </form>
+    <button type="submit">Créer la partie</button>
+</form>
 
     <script>
 

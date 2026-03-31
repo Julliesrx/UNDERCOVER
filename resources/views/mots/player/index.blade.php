@@ -26,8 +26,12 @@
         </li>
         @endforelse
     </ul>
+<<<<<<< HEAD
 
     <a href="{{ route('mots.create') }}" class="btn-ajout-flottant">+</a>
 </div>
 
+=======
+    
+>>>>>>> 8b71687e22a1abc202f8308bca3a5442caafd223
 @endsection
