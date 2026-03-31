@@ -4,20 +4,27 @@
 
 @section('content')
     
-    <a href="{{ route('mots.index') }}"><</a>
+<div id="content">
+    <a href="{{ route('mots.index') }}" class="btn-retour"><</a>
 
-    @if(isset($mot))
-        <form action="{{ route('mots.update', $mot->id_mots) }}" method="POST">
+    <h2 class="soustitre-liste">{{ isset($mot) ? 'Modifier la paire' : 'Ajouter une paire' }}</h2>
+
+    <form action="{{ isset($mot) ? route('mots.update', $mot->id_mots) : route('mots.store') }}" method="POST" class="form-chic">
         @csrf
-        @method('PUT')
-    @else
-        <form action="{{ route('mots.store') }}" method="POST">
-        @csrf
-    @endif
-            <input type="text" name="mot1" value="{{ old('mot1', $mot->mot1 ?? '') }}">
-            <input type="text" name="mot2" value="{{ old('mot2', $mot->mot2 ?? '') }}">
-            <!-- input hidden avec l'id du compte et rectifier dans bdd peut pas etre null -->
-            <button type="submit">{{ isset($mot) ? 'Modifier' : 'Ajouter' }}</button>   
-        </form>
+        @if(isset($mot))
+            @method('PUT')
+        @endif
+
+        <label>Mot 1</label>
+        <input type="text" name="mot1" value="{{ old('mot1', $mot->mot1 ?? '') }}" placeholder="Ex: Parapluie">
+        
+        <label>Mot 2</label>
+        <input type="text" name="mot2" value="{{ old('mot2', $mot->mot2 ?? '') }}" placeholder="Ex: Montgolfière">
+        <!-- input hidden id -->
+        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+        
+        <button type="submit" class="btn-fonce">{{ isset($mot) ? 'Modifier' : 'Ajouter' }}</button>   
+    </form>
+</div>
 
 @endsection

@@ -4,31 +4,28 @@
 
 @section('content')
 
-    <h1>Liste des paires de mots</h1>
-    @if(session('success'))
-        <p>{{ session('success') }}</p>
-    @endif
-    <a href="{{ route('mots.create') }}">Ajouter une paire de mots</a>
+<div id="content">
+    <h2 class="titre-page-mots">modifier la liste de mots</h2>
 
-    <ul>
+    @if(session('success'))
+        <p class="alerte-succes">{{ session('success') }}</p>
+    @endif
+
+    <ul class="liste-mots-maquette">
         @forelse($mots as $mot)
-        <li>
-            <p>{{ $mot->mot1 }} | {{ $mot->mot2 }}</p>
-            <div>
-                <a href="{{ route('mots.show', $mot->id_mots) }}">Voir</a>
-                <a href="{{ route('mots.edit', $mot->id_mots) }}">Modifier</a>
-                <form action="{{ route('mots.destroy', $mot->id_mots) }}" method="POST">
-                    @csrf 
-                    @method('DELETE')
-                    <button type="submit">Supprimer</button>
-                </form>
-            </div>
+        <li class="mot-cadre">
+            <span class="texte-mot">{{ $mot->mot1 }} / {{ $mot->mot2 }}</span>
+            
+            <a href="{{ route('mots.edit', $mot->id_mots) }}" class="btn-trois-points">⋮</a>
         </li>
         @empty
-        <li>
+        <li style="text-align: center; width: 100%; color: var(--violet-moyen); padding: 20px; border: none;">
             Aucune paire de mots pour l'instant
         </li>
         @endforelse
     </ul>
+
+    <a href="{{ route('mots.create') }}" class="btn-ajout-flottant">+</a>
+</div>
 
 @endsection

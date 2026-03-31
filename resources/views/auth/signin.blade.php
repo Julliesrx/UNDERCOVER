@@ -8,37 +8,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/template.css') }}">
-    <title>Inscription</title>
+    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+    
+    <title>Inscription - Undercover</title>
 </head>
 <body>
-    <h1>Inscription</h1>
+    <img src="/logo/undercover-logo.png" alt="Logo Undercover">
 
-    @if($errors->any())
-        <p>{{ $errors->first() }}</p>
-    @endif
+    <div class="carte-login" style="margin-top: 5vh ;">
+        <h1 class="titre-main">INSCRIPTION</h1>
 
-    <form action="{{ route('register') }}" method="POST">
-        @csrf
+        @if($errors->any())
+            <p style="color: red ; margin-bottom: 15px ; font-weight: bold ;">{{ $errors->first() }}</p>
+        @endif
 
-        <label>Nom</label>
-        <input type="text" name="nom" value="{{ old('nom') }}">
+        <form action="{{ route('register') }}" method="POST">
+            @csrf
 
-        <label>Username</label>
-        <input type="text" name="username" value="{{ old('username') }}">
+            <input type="text" name="nom" class="champ-saisie" placeholder="Ton nom" value="{{ old('nom') }}" required autofocus>
 
-        <label>Email</label>
-        <input type="email" name="email" value="{{ old('email') }}">
+            <input type="text" name="username" class="champ-saisie" placeholder="Ton pseudo" value="{{ old('username') }}" required>
 
-        <label>Mot de passe</label>
-        <input type="password" name="password">
+            <input type="email" name="email" class="champ-saisie" placeholder="Email" value="{{ old('email') }}" required>
 
-        <label>Confirmer le mot de passe</label>
-        <input type="password" name="password_confirmation">
+            <input type="password" name="password" id="password" class="champ-saisie" placeholder="Mot de passe" required>
 
-        <button type="submit">S'inscrire</button>
-    </form>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="champ-saisie" placeholder="Confirme le mot de passe" required>
 
-    <a href="{{ route('register') }}">Déjà un compte ? Se connecter</a>
+            <button type="submit" class="btn-valider">CRÉER MON COMPTE</button>
+        </form>
+
+        <p style="margin-top: 20px ;">
+            <a href="{{ route('login') }}" style="color: var(--violet-moyen) ; font-weight: 600 ; text-decoration: none ;">Déjà un compte ? Se connecter</a>
+        </p>
+    </div>
 </body>
 </html>

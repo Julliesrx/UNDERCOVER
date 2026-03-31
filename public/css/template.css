@@ -1,19 +1,41 @@
+/* couleurs */
+:root {
+    --noir: #100111;
+    --violet-foncé: #2A1327;
+    --violet-moyen: #9E6F98;
+    --violet-clair: #CAA8C6;
+    --rose: #F1D2E0;
+    --gris-moyen: #C0C5BA;
+    --blanc: #F3F2ED;
+    --gris-tres-clair: #f5f5f5;
+
+    --ombre: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+    --taille-titre: 2rem;
+    --taille-st: 1.25rem;
+    --taille-corps: 1rem;
+
+    --titre: 'fisterra-morte', sans-serif;
+    --corps: 'quicksand', sans-serif;
+}
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #100111;
+    color: var(--noir);
 }
 
 body {
-    background-color: #F3F2ED;
+    background-color: var(--blanc);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
 #header {
-    background-color: #CAA8C6;
+    background-color: var(--violet-clair);
     width: 100%;
     height: 8%;
     display: flex;
@@ -30,28 +52,32 @@ body {
     /* background-color: rgb(19, 162, 90); */
     width: 100%;
     height: 80%;
-    padding : 15px 20px;
+    padding: 15px 20px;
     overflow: scroll;
     scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* box-sizing: border-box; */
 }
 
 #content>a {
     display: block;
     width: 100%;
-    background-color: #CAA8C6;
-    border: solid 4px #CAA8C6;
-    color: #100111;
+    background-color: var(--violet-clair);
+    border: solid 4px var(--violet-clair);
+    color: var(--noir);
     padding: 15px 0;
-    text-align: center; 
+    text-align: center;
     border-radius: 10px;
     text-decoration: none;
     font-weight: 600;
     transition: all .3s ease;
 }
+
 #content>a:hover {
-    border: solid 4px #CAA8C6;
-    background-color: #F3F2ED;
+    border: solid 4px var(--violet-clair);
+    background-color: var(--blanc);
 }
 
 #content a svg {
@@ -64,7 +90,7 @@ body {
     display: flex;
     justify-content: space-between;
     flex: 1;
-    border: solid 4px #CAA8C6;
+    border: solid 4px var(--violet-clair);
     border-radius: 10px;
     padding: 10px 15px;
     margin: 5px 0;
@@ -73,6 +99,7 @@ body {
 #content ul li .list-left {
     flex: 2;
 }
+
 #content ul li .list-right {
     flex: 1;
     display: flex;
@@ -86,18 +113,19 @@ body {
     cursor: pointer;
     border-radius: 5px;
     background-color: transparent;
-    border: solid 2px #100111;
-    color: #100111;
+    border: solid 2px var(--noir);
+    color: var(--noir);
     transition: all .3s ease;
 }
+
 #content ul li form button:hover {
-    background-color: #100111;
-    border: solid 2px #100111;
-    color: #F3F2ED;
+    background-color: var(--noir);
+    border: solid 2px var(--noir);
+    color: var(--blanc);
 }
 
 nav {
-    background-color: #CAA8C6;
+    background-color: var(--violet-clair);
     width: 100%;
     height: 12%;
     display: flex;
@@ -165,20 +193,607 @@ nav a svg {
     border: 3px solid #1d1d1b;
 }
 
+/* DASHBOARD  */
 
-/* RESPONSIVE */ 
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 8vh;
+}
 
-@media screen AND (min-width: 1025px) {
-    body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    #content {
-        width: 50vw;
-    }
-    nav {
-        justify-content: center;
-        gap: 150px;
-    }
+#content .btn-play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--violet-moyen);
+    color: var(--blanc);
+    text-decoration: none;
+    font-family: var(--titre);
+    font-size: 2.2rem;
+    padding: 15px 40px;
+    width: auto;
+    border-radius: 100px;
+    border: none;
+    box-shadow: 0 8px 25px rgba(158, 111, 152, 0.3);
+    transition: all 0.2s ease;
+}
+
+#content .btn-play:hover {
+    background-color: var(--violet-foncé);
+    color: var(--blanc);
+    border: none;
+}
+
+#content .btn-play:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 15px rgba(158, 111, 152, 0.2);
+}
+
+#content .section-saison-cadre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blanc);
+    border: 1px solid var(--violet-clair);
+    color: var(--noir);
+    text-decoration: none;
+    width: 90%;
+    max-width: 380px;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--ombre);
+}
+
+#content .section-saison-cadre:hover {
+    background-color: var(--blanc);
+    /* Annule le hover de l'ancien code */
+    border: 1px solid var(--violet-clair);
+}
+
+.section-saison-cadre .titre-saison {
+    font-family: var(--titre);
+    font-size: 1.6rem;
+    color: var(--violet-foncé);
+    margin-bottom: 8px;
+}
+
+.section-saison-cadre .date-saison {
+    font-family: var(--corps);
+    font-size: 0.95rem;
+    color: var(--violet-moyen);
+    font-weight: 600;
+}
+
+.saison-vide {
+    font-family: var(--titre);
+    color: var(--violet-clair);
+    font-size: 1.2rem;
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* SAISON */
+
+#content .entete-saison {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#content .entete-saison h1 {
+    font-family: var(--titre);
+    color: var(--violet-foncé);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+#content .entete-saison p {
+    color: var(--violet-moyen);
+    margin-bottom: 5px;
+}
+
+#content .badge-statut {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.badge-active {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.badge-close {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+#content .classement-liste {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+#content .joueur-carte {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(202, 168, 198, 0.4);
+}
+
+#content .joueur-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#content .joueur-avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--violet-clair);
+    box-shadow: var(--ombre);
+}
+
+#content .joueur-avatar img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+#content .joueur-score {
+    font-family: var(--titre);
+    font-size: 1.5rem;
+    color: var(--violet-foncé);
+}
+
+#content .form-chic {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#content .form-chic label {
+    font-family: var(--corps);
+    font-weight: 600;
+    color: var(--violet-foncé);
+    margin-bottom: -5px;
+}
+
+#content .form-chic input {
+    padding: 12px 15px;
+    border: 2px solid var(--rose);
+    border-radius: 15px;
+    background-color: #fafafa;
+    font-family: var(--corps);
+    outline: none;
+}
+
+#content .btn-fonce {
+    background-color: var(--violet-foncé);
+    color: var(--blanc);
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    font-family: var(--corps);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#content .btn-fonce:hover {
+    background-color: var(--noir);
+}
+
+
+/* PAGE MOTS */
+
+#content .titre-page-mots {
+    text-align: center;
+    font-family: var(--corps);
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--noir);
+    margin-bottom: 2rem;
+}
+
+#content ul.liste-mots-maquette {
+    list-style: none;
+    padding: 0;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#content ul.liste-mots-maquette li.mot-cadre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid var(--violet-clair);
+    border-radius: 15px;
+    padding: 12px 20px;
+    background-color: transparent;
+    margin: 0;
+}
+
+#content .mot-cadre .texte-mot {
+    font-family: var(--corps);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--noir);
+}
+
+#content .mot-cadre .btn-trois-points {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background-color: var(--violet-moyen);
+    color: var(--blanc);
+    border-radius: 50%;
+    border: none;
+    font-size: 1.2rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#content>a.btn-ajout-flottant {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 45px;
+    background-color: var(--violet-foncé);
+    color: var(--blanc);
+    border-radius: 30px;
+    font-size: 2rem;
+    margin: 30px auto 0 auto;
+    box-shadow: var(--ombre);
+    border: none !important;
+}
+
+/* FORMULAIRE AJOUT MOTS */
+
+#content h2,
+#content .titre-page-mots {
+    text-align: center !important;
+    width: 100%;
+    margin-bottom: 2rem;
+    font-family: var(--titre) !important;
+    /* font-weight: normal; */
+    font-size: var(--taille-titre);
+    color: var(--violet-foncé);
+}
+
+#content form {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#content form label,
+#content form input {
+    width: 100%;
+    text-align: left;
+}
+
+#content form button[type="submit"] {
+    align-self: center;
+    width: max-content;
+    min-width: 150px;
+    margin-top: 30px;
+    padding: 12px 30px;
+    border-radius: 30px;
+    background-color: var(--violet-foncé);
+    color: var(--blanc);
+    border: none;
+    font-family: var(--corps);
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#content form button[type="submit"]:hover {
+    background-color: var(--violet-foncé);
+}
+
+/* --------------------------------------------------------- */
+
+/* JOUEURS */
+
+#content .grille-joueurs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+#content .carte-joueur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#content .carte-joueur .nom-joueur {
+    font-family: var(--titre);
+    font-size: 1.6rem;
+    color: var(--noir);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#content .carte-joueur .avatar-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+#content .carte-joueur .avatar-container img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+#content .carte-joueur .score-joueur {
+    font-family: var(--corps);
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--noir);
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+#content .carte-joueur .actions-joueur {
+    display: flex;
+    gap: 10px;
+}
+
+#content .carte-joueur .btn-action-mini {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.2s;
+}
+
+#content .carte-joueur .btn-action-mini:hover {
+    background-color: var(--noir);
+    color: var(--blanc);
+}
+
+#selecteur-avatar-chic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+#selecteur-avatar-chic button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--violet-foncé);
+    cursor: pointer;
+}
+
+#selecteur-couleurs-chic {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+#content h2,
+#content form,
+#content .liste-mots-maquette,
+#content .grille-joueurs {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* AFFICH JOUEURS */
+
+#content .grille-joueurs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+#content .carte-joueur {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    padding: 25px 15px;
+    background-color: var(--blanc);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#content .carte-joueur:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+#content .avatar-conteneur {
+    width: 120px;
+    height: 120px;
+    border-radius: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#content .avatar-conteneur img {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+}
+
+#content .nom-joueur {
+    font-family: var(--titre);
+    font-size: 1.8rem;
+    color: var(--noir);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#content .score-joueur {
+    font-family: var(--corps);
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: var(--violet-foncé);
+    background-color: var(--gris-tres-clair);
+    padding: 8px 20px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+#content .actions-joueur {
+    display: flex;
+    gap: 15px;
+}
+
+
+.avatar-grand {
+    width: 150px;
+    height: 150px;
+    border-radius: 30%;
+    margin-bottom: 25px;
+}
+
+/* FORM CR2ATION JOUEUR */
+
+.selecteur-avatar-conteneur {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin: 25px 0;
+    width: 100%;
+}
+
+.avatar-form-display {
+    border-radius: 30%;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--ombre);
+}
+
+.fleche-selecteur {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--violet-foncé);
+    cursor: pointer;
+}
+
+.liste-couleurs-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.couleur-pastille {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+}
+
+.couleur-pastille.selected {
+    border-color: var(--noir);
+}
+
+.actions-joueur {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.link-action {
+    font-family: var(--corps);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--violet-moyen);
+    transition: color 0.2s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.link-action:hover {
+    color: var(--noir);
+}
+
+.btn-supprimer-text {
+    color: #b71c1c;
+}
+
+.btn-supprimer-text:hover {
+    color: var(--noir);
 }
