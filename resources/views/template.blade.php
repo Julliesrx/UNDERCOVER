@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/template.css') }}">
     <title>Undercover | @yield('title')</title>
+    @stack('styles')
 </head>
 
 <body>
@@ -60,6 +61,12 @@
             </svg>
         </a>
     </div>
+
+    @if(session('success'))
+    <p class="message-succes" style="color: var(--violet-foncé); font-family: var(--corps); text-align: center; margin-top: 15px; margin-bottom: -10px;">
+        {{ session('success') }}
+    </p>
+    @endif
 
     <div id="content">
 

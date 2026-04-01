@@ -9,9 +9,6 @@
 
     <h2 class="titre-page-mots">modifier la liste de mots</h2>
 
-    @if(session('success'))
-        <p class="alerte-succes">{{ session('success') }}</p>
-    @endif
 
     <ul class="liste-mots-maquette">
         @forelse($mots as $mot)

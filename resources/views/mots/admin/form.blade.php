@@ -5,7 +5,7 @@
 @section('content')
     
 <div id="content">
-    <a href="{{ route('mots.index') }}" class="btn-retour"><</a>
+    <a href="{{ route('mots.index') }}" class="btn-retour-rond"><</a>
 
     <h2 class="soustitre-liste">{{ isset($mot) ? 'Modifier la paire' : 'Nouvelle paire' }}</h2>
 
@@ -21,7 +21,7 @@
         <label>Mot 2</label>
         <input type="text" name="mot2" value="{{ old('mot2', $mot->mot2 ?? '') }}" placeholder="Ex: Montgolfière">
         
-        <button type="submit" class="btn-fonce">{{ isset($mot) ? 'Modifier' : 'Ajouter' }}</button>   
+        <button type="submit" class="btn-fonce">{{ isset($mot) ? 'Sauvegarder les modifications' : 'Ajouter' }}</button>   
     </form>
 </div>
 

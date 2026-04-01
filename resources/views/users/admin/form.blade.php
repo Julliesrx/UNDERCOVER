@@ -1,33 +1,52 @@
-@extends('administration') 
+@extends('administration')
 
-@section('title', 'Formulaire user')
+@section('title', isset($user) ? 'Modifier user' : 'Ajouter user')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+@endpush
 
 @section('content')
+<div id="content" style="position: relative; display: flex; flex-direction: column; align-items: center; padding-top: 20px;">
 
-    <a href="{{ route('users.index') }}"><</a>
+    <a href="{{ route('users.index') }}" class="btn-retour">&lt;</a>
 
-    @if(isset($user))
-        <form action="{{ route('users.update', $user->id_user) }}" method="POST">
+    <h2 class="profil-titre">{{ isset($user) ? 'MODIFIER' : 'AJOUTER' }} USER</h2>
+
+    <div class="form-container">
+        <form action="{{ isset($user) ? route('users.update', $user->id_user) : route('users.store') }}" method="POST">
+            @csrf
+            @if(isset($user)) @method('PUT') @endif
+
+            <div class="group-champ">
+                <label>Nom</label>
+                <input type="text" name="nom" value="{{ old('nom', $user->nom ?? '') }}">
+            </div>
+
+            <div class="group-champ">
+                <label>Username</label>
+                <input type="text" name="username" value="{{ old('username', $user->username ?? '') }}">
+            </div>
+
+            <div class="group-champ">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ old('email', $user->email ?? '') }}">
+            </div>
+
+            <div class="group-champ">
+                <label>Mot de passe {{ isset($user) ? '(optionnel)' : '' }}</label>
+                <input type="password" name="password">
+            </div>
+
+            <button type="submit" class="btn-modifier-chic">
+                {{ isset($user) ? 'Modifier' : 'Ajouter' }}
+            </button>
+        </form>
+    </div>
+
+    <form action="{{ route('logout') }}" method="POST">
         @csrf
-        @method('PUT')
-    @else
-        <form action="{{ route('users.store') }}" method="POST">
-        @csrf
-    @endif
-
-        <label>Nom</label>
-        <input type="text" name="nom" value="{{ old('nom', $user->nom ?? '') }}">
-
-        <label>Username</label>
-        <input type="text" name="username" value="{{ old('username', $user->username ?? '') }}">
-
-        <label>Email</label>
-        <input type="email" name="email" value="{{ old('email', $user->email ?? '') }}">
-
-        <label>Mot de passe {{ isset($user) ? '(laisser vide pour ne pas modifier)' : '' }}</label>
-        <input type="password" name="password">
-
-        <button type="submit">{{ isset($user) ? 'Modifier' : 'Ajouter' }}</button>
+        <button type="submit" class="btn-logout-externe">Se déconnecter</button>
     </form>
-
+</div>
 @endsection

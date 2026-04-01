@@ -37,7 +37,6 @@ body {
 img {
     display: block;
     width: 260px;
-    /* margin: 0 auto 1.25rem; */
     margin-left: auto; 
 }
 
@@ -54,7 +53,6 @@ img {
     /* position: absolute; */
     /* top: 43%; */
     /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
 }
 
 

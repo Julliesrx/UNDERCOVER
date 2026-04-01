@@ -1,0 +1,192 @@
+/* --- CONTENEUR PROFIL --- */
+.profil-card {
+    background: var(--gris-clair);
+    border: 2px solid var(--violet-clair);
+    border-radius: 25px;
+    padding: 30px;
+    width: 95%;
+    max-width: 550px;
+    margin: 20px auto;
+    box-shadow: var(--ombre);
+}
+
+.profil-titre {
+    font-family: var(--titre);
+    font-size: 2.2rem;
+    color: var(--violet-foncé);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.info-ligne {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--violet-clair);
+    font-family: var(--corps);
+}
+
+.info-label {
+    font-weight: bold;
+    color: var(--violet-moyen);
+}
+
+.statut-actif {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.statut-banni {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* --- SECTION JOUEURS (ADMIN) --- */
+.section-titre {
+    font-family: var(--titre);
+    font-size: 1.5rem;
+    color: var(--violet-foncé);
+    margin: 30px 0 15px;
+    text-align: center;
+}
+
+.liste-joueurs-compte {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 15px;
+}
+
+.item-joueur {
+    background: var(--rose);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar-rond-moyen {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--gris-clair);
+    flex-shrink: 0;
+}
+
+.avatar-rond-moyen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.joueur-details {
+    flex: 1;
+}
+
+.joueur-nom {
+    font-family: var(--titre);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.actions-inline {
+    display: flex;
+    gap: 5px;
+}
+
+
+/* --- FORMULAIRES --- */
+.form-container {
+    background: var(--gris-clair);
+    border: 2px solid var(--violet-clair);
+    border-radius: 25px;
+    padding: 30px;
+    width: 95%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: var(--ombre);
+}
+
+.group-champ {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.group-champ label {
+    font-family: var(--corps);
+    font-weight: bold;
+    color: var(--violet-foncé);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.group-champ input {
+    padding: 12px 15px;
+    border: 2px solid var(--violet-clair);
+    border-radius: 12px;
+    font-family: var(--corps);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.group-champ input:focus {
+    border-color: var(--violet-moyen);
+}
+
+.btn-large {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--violet-foncé);
+    color: var(--gris-clair);
+    border: none;
+    border-radius: 15px;
+    font-family: var(--titre);
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--ombre);
+    margin-top: 10px;
+    transition: transform 0.2s;
+}
+
+.btn-large:hover {
+    transform: scale(1.02);
+}
+
+/* Le bouton dans la boite : Fond blanc, bordure violet-clair */
+.btn-modifier-profil {
+    display: block;
+    width: 100%;
+    background-color: var(--gris-clair) !important;
+    border: 1px solid var(--violet-clair) !important;
+    color: var(--violet-foncé) !important;
+    padding: 15px;
+    text-align: center;
+    font-family: var(--titre);
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: 0.2s;
+    margin-top: 20px;
+}
+
+.btn-modifier-profil:hover {
+    background-color: var(--violet-foncé) !important;
+    color: white !important;
+    border-color: var(--violet-foncé) !important;
+}
+
+/* Le bouton deco en dessous : simple texte souligné */
+.btn-logout-externe {
+    background: none;
+    border: none;
+    color: var(--violet-moyen);
+    text-decoration: underline;
+    font-family: var(--corps);
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}

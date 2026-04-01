@@ -10,8 +10,8 @@ class MotsController extends Controller
     public function index()
     {
         $mots = Mot::all();
-        
-        if(auth()->user()->role === 'admin') {
+
+        if (auth()->user()->role === 'admin') {
             return view('mots.admin.index', ['mots' => $mots]);
         } else {
             return view('mots.player.index', ['mots' => $mots]);
@@ -20,7 +20,7 @@ class MotsController extends Controller
 
     public function create()
     {
-        if(auth()->user()->role === 'admin') {
+        if (auth()->user()->role === 'admin') {
             return view('mots.admin.form');
         } else {
             return view('mots.player.form');
@@ -51,25 +51,26 @@ class MotsController extends Controller
         // return view('mots.show', ['mot' => $mot]);
     }
 
-    public function edit(string $id)
+    public function edit($id)
     {
-        // $mot = Mot::findOrFail($id);
-    
-        // return view('mots.form', ['mot' => $mot]);
+        $mot = \App\Models\Mot::findOrFail($id);
+
+        return view('mots.player.form', compact('mot'));
+
     }
 
     public function update(Request $request, string $id)
     {
-        // $request->validate([
-        //     'mot1' => 'required|string|max:50',
-        //     'mot2' => 'required|string|max:50',
-        //     // ajouter plus tard l'id du user authentifié ??
-        // ]);
+        $request->validate([
+            'mot1' => 'required|string|max:50',
+            'mot2' => 'required|string|max:50',
+            // ajouter plus tard l'id du user authentifié ??
+        ]);
 
-        // $mot = Mot::findOrFail($id);
-        // $mot->update($request->all());
+        $mot = Mot::findOrFail($id);
+        $mot->update($request->all());
 
-        // return redirect()->route('mots.index')->with('success', 'Paire de mots modifiée');
+        return redirect()->route('mots.index')->with('success', 'Paire de mots modifiée');
     }
 
     public function destroy(string $id)

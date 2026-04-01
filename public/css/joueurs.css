@@ -1,54 +1,75 @@
-/* Grille de 2 colonnes */
+/* Grille et Cartes */
 .grille-joueurs {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    width: 85%;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
     margin: 0 auto;
+    padding: 10px;
     list-style: none;
-    padding: 0;
 }
 
-/* La Carte */
 .carte-joueur {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--blanc);
     border-radius: 20px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: var(--ombre);
+    border: 2px solid var(--violet-clair);
 }
 
+/* Avatar parfait */
 .avatar-conteneur {
-    width: 100px;
-    height: 100px;
-    border-radius: 30%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    border: 2px solid rgba(0,0,0,0.05);
 }
 
-.nom-joueur {
-    font-family: var(--titre);
-    font-size: 1.4rem;
-    color: var(--violet-foncé);
+.avatar-conteneur img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Centrage auto */
 }
 
-/* Actions en texte */
+/* Les Boutons Chic */
 .actions-joueur {
     display: flex;
-    gap: 12px;
-    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
 }
 
-.link-action {
-    font-family: var(--corps);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
+.btn-action-chic {
+    background-color: white !important;
+    border: 1px solid var(--violet-clair) !important;
+    color: var(--violet-foncé) !important;
+    padding: 6px 10px;
+    border-radius: 10px;
     text-decoration: none;
-    color: var(--violet-moyen);
-    cursor: pointer;
+    font-family: var(--corps);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
+
+.btn-action-chic:hover {
+    background-color: var(--violet-foncé) !important;
+    color: white !important;
+    border-color: var(--violet-foncé) !important;
+}
+
+.btn-suppr {
+    color: #d32f2f !important;
+    border-color: #ffcdd2 !important;
 }

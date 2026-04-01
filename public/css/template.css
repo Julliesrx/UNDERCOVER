@@ -32,7 +32,38 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    font-family: var(--corps);
+    display: flex;
+    flex-direction: column;
 }
+
+/* BOUTON RETOUR A LA PAGE D4ABVANT */
+.btn-retour {
+    position: absolute !important;
+    top: 15px !important;
+    left: 15px !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background-color: var(--violet-moyen) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
+    z-index: 999 !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+#content {
+    position: relative !important;
+}
+
 
 #header {
     background-color: var(--violet-clair);
@@ -49,23 +80,21 @@ body {
 }
 
 #content {
-    /* background-color: rgb(19, 162, 90); */
+    flex: 1;
     width: 100%;
-    height: 80%;
     padding: 15px 20px;
-    overflow: scroll;
+    overflow-y: scroll;
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* box-sizing: border-box; */
 }
 
 #content>a {
     display: block;
     width: 100%;
     background-color: var(--violet-clair);
-    border: solid 4px var(--violet-clair);
+    border: solid 1px var(--violet-clair);
     color: var(--noir);
     padding: 15px 0;
     text-align: center;
@@ -76,7 +105,7 @@ body {
 }
 
 #content>a:hover {
-    border: solid 4px var(--violet-clair);
+    border: solid 1px var(--violet-clair);
     background-color: var(--blanc);
 }
 
@@ -90,7 +119,7 @@ body {
     display: flex;
     justify-content: space-between;
     flex: 1;
-    border: solid 4px var(--violet-clair);
+    border: solid 1px var(--violet-clair);
     border-radius: 10px;
     padding: 10px 15px;
     margin: 5px 0;
@@ -171,7 +200,7 @@ nav a svg {
 }
 
 .avatar-option.selected {
-    border: 3px solid #1d1d1b;
+    border: 1px solid #1d1d1b;
 }
 
 #selecteur-couleurs {
@@ -185,12 +214,12 @@ nav a svg {
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
     transition: border 0.2s;
 }
 
 .couleur-option.selected {
-    border: 3px solid #1d1d1b;
+    border: 1px solid #1d1d1b;
 }
 
 /* DASHBOARD  */
@@ -345,15 +374,10 @@ nav a svg {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--violet-clair);
+    border: 1px solid var(--violet-clair);
     box-shadow: var(--ombre);
 }
 
-#content .joueur-avatar img {
-    width: 70%;
-    height: 70%;
-    object-fit: contain;
-}
 
 #content .joueur-score {
     font-family: var(--titre);
@@ -378,7 +402,7 @@ nav a svg {
 
 #content .form-chic input {
     padding: 12px 15px;
-    border: 2px solid var(--rose);
+    border: 1px solid var(--rose);
     border-radius: 15px;
     background-color: #fafafa;
     font-family: var(--corps);
@@ -430,7 +454,7 @@ nav a svg {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 3px solid var(--violet-clair);
+    border: 1px solid var(--violet-clair);
     border-radius: 15px;
     padding: 12px 20px;
     background-color: transparent;
@@ -521,7 +545,6 @@ nav a svg {
     background-color: var(--violet-foncé);
 }
 
-/* --------------------------------------------------------- */
 
 /* JOUEURS */
 
@@ -543,7 +566,7 @@ nav a svg {
     padding: 20px 10px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     position: relative;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #content .carte-joueur .nom-joueur {
@@ -758,7 +781,7 @@ nav a svg {
     height: 45px;
     border-radius: 50%;
     cursor: pointer;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
 }
 
 .couleur-pastille.selected {
@@ -796,4 +819,44 @@ nav a svg {
 
 .btn-supprimer-text:hover {
     color: var(--noir);
+}
+
+
+/* ajout message erreur sous header  */
+
+.alert-flash {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--violet-moyen);
+    box-shadow: var(--ombre);
+    color: white !important;
+    text-align: center;
+    font-weight: bold;
+    font-family: var(--corps);
+    z-index: 100;
+}
+
+
+.btn-action-joli {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blanc);
+    border: 1px solid var(--violet-clair);
+    color: var(--violet-foncé) !important;
+    padding: 8px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: var(--corps);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin: 2px;
+}
+
+.btn-action-joli:hover {
+    background-color: var(--violet-foncé);
+    color: var(--blanc) !important;
+    border-color: var(--violet-foncé);
 }

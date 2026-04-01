@@ -5,7 +5,7 @@
 @section('content')
     
 <div id="content">
-    <a href="{{ route('mots.index') }}" class="btn-retour"><</a>
+    <a href="{{ route('mots.index') }}" class="btn-retour-rond"><</a>
 
     <h2 class="soustitre-liste">{{ isset($mot) ? 'Modifier la paire' : 'Ajouter une paire' }}</h2>
 
@@ -23,7 +23,7 @@
         <!-- input hidden id -->
         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
         
-        <button type="submit" class="btn-fonce">{{ isset($mot) ? 'Modifier' : 'Ajouter' }}</button>   
+        <button type="submit" class="btn-fonce">{{ isset($mot) ? 'Sauvegarder les modifications' : 'Ajouter' }}</button>   
     </form>
 </div>
 
