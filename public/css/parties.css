@@ -95,3 +95,44 @@
     background-color: var(--rose);
     transform: scale(1.05);
 }
+
+/* =============================================
+   RESPONSIVE MOBILE (max-width: 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+    .carte-partie {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px;
+        width: 98%;
+    }
+
+    .partie-titre {
+        font-size: 1rem;
+    }
+
+    /* Sélection joueurs : 2 colonnes */
+    .grille-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .joueur-label {
+        padding: 8px 6px;
+        font-size: 0.82rem;
+    }
+
+    .joueur-detail-ligne {
+        padding: 10px 12px;
+        gap: 10px;
+        width: 98%;
+    }
+
+    .avatar-mini {
+        width: 48px;
+        height: 48px;
+    }
+}

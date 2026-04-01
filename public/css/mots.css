@@ -31,3 +31,26 @@
     box-shadow: var(--ombre);
     text-decoration: none;
 }
+
+/* =============================================
+   RESPONSIVE MOBILE (max-width: 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+    .liste-mots-maquette {
+        width: 92%;
+        gap: 10px;
+    }
+
+    .mot-cadre {
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+
+    .btn-ajout-ovale {
+        width: 80px;
+        height: 40px;
+        font-size: 1.7rem;
+    }
+}

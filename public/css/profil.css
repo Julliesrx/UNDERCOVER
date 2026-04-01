@@ -190,3 +190,55 @@
     margin-top: 20px;
     font-size: 0.9rem;
 }
+
+/* =============================================
+   RESPONSIVE MOBILE (max-width: 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+    .profil-card,
+    .form-container {
+        width: 98%;
+        padding: 18px 14px;
+        border-radius: 18px;
+        margin: 10px auto;
+    }
+
+    .profil-titre {
+        font-size: 1.7rem;
+    }
+
+    .info-ligne {
+        flex-direction: column;
+        gap: 2px;
+        padding: 10px 0;
+    }
+
+    .section-titre {
+        font-size: 1.2rem;
+    }
+
+    .item-joueur {
+        padding: 10px 12px;
+    }
+
+    .avatar-rond-moyen {
+        width: 48px;
+        height: 48px;
+    }
+
+    .group-champ input {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .btn-large {
+        padding: 13px;
+        font-size: 1rem;
+    }
+
+    .actions-inline {
+        flex-wrap: wrap;
+    }
+}

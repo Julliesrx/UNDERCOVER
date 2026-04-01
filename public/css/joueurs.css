@@ -73,3 +73,31 @@
     color: #d32f2f !important;
     border-color: #ffcdd2 !important;
 }
+
+/* =============================================
+   RESPONSIVE MOBILE (max-width: 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+    .grille-joueurs {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px;
+        padding: 6px;
+    }
+
+    .carte-joueur {
+        padding: 12px 8px;
+        border-radius: 16px;
+    }
+
+    .avatar-conteneur {
+        width: 65px;
+        height: 65px;
+    }
+
+    .btn-action-chic {
+        font-size: 0.68rem;
+        padding: 5px 7px;
+    }
+}

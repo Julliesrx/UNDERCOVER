@@ -596,3 +596,97 @@
 #phase-fin>a:active {
     transform: scale(0.97);
 }
+
+/* =============================================
+   RESPONSIVE MOBILE (max-width: 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+    /* Carousel : cartes moins larges */
+    #carousel-cartes {
+        width: 220px;
+        height: 380px;
+    }
+
+    #phase-decouverte {
+        height: 82vh;
+    }
+
+    .carte-face-avant p:first-child {
+        font-size: 1.3rem;
+    }
+
+    .carte-face-arriere p {
+        font-size: 1.8rem;
+    }
+
+    .carte > button {
+        padding: 10px 28px;
+        font-size: 0.88rem;
+        bottom: -52px;
+    }
+
+    /* Grille joueurs : 2 colonnes sur petits écrans */
+    #liste-joueurs {
+        grid-template-columns: repeat(2, 1fr);
+        width: 95%;
+        gap: 10px;
+    }
+
+    .joueur-actif {
+        min-height: 120px;
+        padding: 14px 6px;
+        gap: 7px;
+    }
+
+    .avatar-joueur {
+        width: 50px;
+        height: 50px;
+    }
+
+    .joueur-actif p {
+        font-size: 0.85rem;
+    }
+
+    .joueur-actif button {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+
+    /* Popup */
+    #popup-contenu {
+        padding: 10px 16px 40px;
+        gap: 10px;
+        max-width: 100%;
+    }
+
+    #popup-contenu strong {
+        font-size: 1.2rem;
+    }
+
+    #popup-contenu button {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    /* Phase fin */
+    #phase-fin {
+        padding: 16px 14px 24px;
+        gap: 12px;
+    }
+
+    #phase-fin h2 {
+        font-size: 1.5rem;
+    }
+
+    #classement li {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    #classement li .avatar-joueur {
+        width: 42px;
+        height: 42px;
+    }
+}

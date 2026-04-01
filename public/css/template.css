@@ -860,3 +860,67 @@ nav a svg {
     color: var(--blanc) !important;
     border-color: var(--violet-foncé);
 }
+
+/* =============================================
+   RESPONSIVE MOBILE (max-width: 480px)
+   ============================================= */
+
+@media (max-width: 480px) {
+
+    #header {
+        height: 7%;
+    }
+
+    #content {
+        padding: 12px 14px;
+    }
+
+    nav {
+        height: 11%;
+        border-top-left-radius: 28px;
+        border-top-right-radius: 28px;
+    }
+
+    nav a svg {
+        width: 60%;
+        height: 60%;
+    }
+
+    /* Listes */
+    #content ul li {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 12px;
+    }
+
+    #content ul li .list-right {
+        align-items: flex-start;
+    }
+
+    #content ul li form button {
+        width: 100%;
+    }
+
+    /* Titres */
+    #content h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    /* Forms */
+    #content form {
+        width: 95%;
+    }
+
+    #content h2,
+    #content .liste-mots-maquette,
+    #content .grille-joueurs {
+        width: 95%;
+    }
+
+    /* Grille joueurs */
+    #content .grille-joueurs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
